@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="msapplication-tap-highlight" content="no">
+<title>WEB应用扫描器</title>
+<!-- Favicons-->
+<link rel="icon" href="/static/images/favicon/favicon-32x32.png" sizes="32x32">
+<!-- Favicons-->
+<link rel="apple-touch-icon-precomposed" href="/static/images/favicon/apple-touch-icon-152x152.png">
+<!-- For iPhone -->
+<meta name="msapplication-TileColor" content="#00bcd4">
+<meta name="msapplication-TileImage" content="/static/images/favicon/mstile-144x144.png">
+<!-- For Windows Phone -->
+<!-- CORE CSS-->
+<link href="/static/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="/static/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- Custome CSS-->
+<link href="/static/css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link href="/static/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="/static/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="/static/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="/static/js/plugins/jquery.nestable/nestable.css" type="text/css" rel="stylesheet" media="screen,projection">
+ <link href="/static/js/plugins/sweetalert/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
+{% block yourstyle %}{% end %}
+</head>
+<body>
+<!-- Start Page Loading -->
+<div id="loader-wrapper">
+  <div id="loader">
+  </div>
+  <div class="loader-section section-left">
+  </div>
+  <div class="loader-section section-right">
+  </div>
+</div>
+<!-- End Page Loading -->
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START HEADER -->
+<header id="header" class="page-topbar">
+<!-- start header nav-->
+<div class="navbar-fixed">
+  <nav class="navbar-color">
+  <div class="nav-wrapper">
+  <ul class="right hide-on-med-and-down">
+
+GourdScan V2.0   &nbsp&nbsp&nbsp
+
+</ul>
+  </div>
+  </nav>
+</div>
+<!-- end header nav-->
+</header>
+<!-- END HEADER -->
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START MAIN -->
+<div id="main">
+  <!-- START WRAPPER -->
+  <div class="wrapper">
+    <!-- START LEFT SIDEBAR NAV-->
+    <aside id="left-sidebar-nav">
+    <ul id="slide-out" class="side-nav fixed leftside-navigation">
+      
+
+      <li class="user-details cyan darken-2">
+      <div class="row">
+        <div class="col col s4 m4 l4">
+          <img src="/static/images/piaoyi.gif" alt="" class="circle valign profile-image">
+        </div>
+        <div class="col col s8 m8 l8">
+          <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">同程 信息安全组<i class="mdi-navigation-arrow-drop-down right"></i></a>
+          <p class="user-roal">
+            Administrator
+          </p>
+        </div>
+      </div>
+      </li>
+
+
+      <li class="bold {{"active" if 1 == activenum else ""}}"><a href="/urls.scan" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> 实时情况</a>
+      </li>
+      
+      <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan {{"active" if 1<activenum<8 else ""}}"><i class="mdi-action-view-carousel"></i> 扫描结果</a>
+        <div class="collapsible-body">
+          <ul>
+            <li class=" {{"active" if 2 == activenum else ""}}"><a href="/xss.scan">XSS</a>
+            </li>
+            <li class=" {{"active" if 3 == activenum else ""}}"><a href="/sqli.scan">SQLi</a>
+            </li>
+            <li class=" {{"active" if 4 == activenum else ""}}"><a href="/xpath.scan">XPATH</a>
+            </li>
+            <li class=" {{"active" if 5 == activenum else ""}}"><a href="/ldap.scan">LDAP</a>
+            </li>
+            <li class=" {{"active" if 6 == activenum else ""}}"><a href="/lfi.scan">LFI</a>
+            </li>
+            <li class=" {{"active" if 7 == activenum else ""}}"><a href="/sqli_time.scan">SQLi_Time</a>
+            </li>
+          </ul>
+        </div>
+        </li>
+      </ul>
+      </li>
+
+      <li class="bold {{"active" if 8 == activenum else ""}}"><a href="/configuration.scan" class="waves-effect waves-cyan"><i class="mdi-action-perm-data-setting"></i> 配置</a>
+      </li>
+</ul>
+</aside>
+</div>
+{% block yoursection %}{% end %}
+</div>
+
+
+       </div>
+
+
+
+
+        </div>
+      </div>
+      <!-- Floating Action Button -->
+      <!--<div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+        <a class="btn-floating btn-large">
+        <i class="mdi-action-stars"></i>
+        </a>
+        <ul>
+          <li><a href="/" class="btn-floating red"><i class="large mdi-communication-live-help"></i></a></li>
+          <li><a href="/" class="btn-floating yellow darken-1"><i class="large mdi-device-now-widgets"></i></a></li>
+          <li><a href="/" class="btn-floating green"><i class="large mdi-editor-insert-invitation"></i></a></li>
+          <li><a href="/" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>
+        </ul>
+      </div>-->
+      <!-- Floating Action Button -->
+    </div>
+    <!--end container-->
+    </section>
+    <!-- END CONTENT -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- LEFT RIGHT SIDEBAR NAV-->
+  </div>
+  <!-- END WRAPPER -->
+</div>
+<!-- END MAIN -->
+<!-- START FOOTER -->
+<footer class="page-footer">
+<div class="footer-copyright">
+  <div class="container">
+    <span>Copyright © 2016 <a class="grey-text text-lighten-4" href="http://www.ly.com" target="_blank">同程安全组</a> All rights reserved.</span>
+    <span class="right"> Developed by <a class="grey-text text-lighten-4" href="http://www.ly.com">同程安全组</a></span>
+  </div>
+</div>
+</footer>
+<!-- END FOOTER -->
+<!-- ================================================
+    Scripts
+    ================================================ -->
+<!-- jQuery Library -->
+<script type="text/javascript" src="/static/js/plugins/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.liMarquee.js"></script>
+<!--angularjs-->
+<script type="text/javascript" src="/static/js/plugins/angular.min.js"></script>
+<!--materialize js-->
+<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+<!--prism -->
+<script type="text/javascript" src="/static/js/plugins/prism/prism.js"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="/static/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<!-- chartist -->
+<script type="text/javascript" src="/static/js/plugins/chartist-js/chartist.min.js"></script>
+<!--floatThead -->
+<script type="text/javascript" src="/static/js/plugins/floatThead/jquery.floatThead.min.js"></script>
+<script type="text/javascript" src="/static/js/plugins/floatThead/jquery.floatThead-slim.min.js"></script>
+<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+<script type="text/javascript" src="/static/js/plugins.min.js"></script>
+<!--custom-script.js - Add your own theme custom JS-->
+<script type="text/javascript" src="/static/js/custom-script.js"></script>
+
+  <!-- masonry -->
+    <script src="/static/js/plugins/masonry.pkgd.min.js"></script>
+    <!-- imagesloaded -->
+    <script src="/static/js/plugins/imagesloaded.pkgd.min.js"></script>
+
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="/static/js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="/static/js/custom-script.js"></script>
+
+
+
+    <!--angularjs-->
+    <script type="text/javascript" src="/static/js/plugins/angular.min.js"></script>
+    <script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<!--floatThead custom js-->
+    <script type="text/javascript">
+{% block yourjs %}{% end %}
+</script>
+</body>
+</html>
+

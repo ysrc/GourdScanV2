@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block yoursection %}
+<div class="col s12 m12 l6">
+<p>用json格式文件配置，自行放置在目录下。（web程序与生产者用conf.json配置连接redis，消费者用conf.json配置sqlmapapi与redis）</p>
+<pre class=" language-javascript">
+<code class=" language-javascript">
+{{file}}
+</code></pre>
+</div>
+{% end %}

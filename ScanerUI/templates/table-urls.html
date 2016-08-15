@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% block yourstyle %}
+<link rel="stylesheet" href="/static/css/liMarquee.css">
+<style>
+.dowebok {  height: 500px; margin: 100px auto; font-size: 14px;}
+</style>
+<link rel="stylesheet" href="/static/css/liMarquee.css">
+<script type="text/javascript" src="/static/js/loader.js"></script>
+{% end %}
+{% block yoursection %}
+    <!-- START CONTENT -->
+    <section id="content">
+    <!--breadcrumbs start-->
+    <!--breadcrumbs end-->
+    <!--start container-->
+    <div class="container">
+
+
+                        <div class="row">
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content  green white-text">
+                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> all requests</p>
+                                        <h4 class="card-stats-number">{{reqnum}}</h4>
+                                    </div>
+                                    <div class="card-action  green darken-2">
+                                        <div id="clients-bar" class="center-align"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content pink lighten-1 white-text">
+                                        <p class="card-stats-title"><i class="mdi-action-grade"></i> waiting to test</p>
+                                        <h4 class="card-stats-number">{{waitnum}}</h4>
+                                    </div>
+                                    <div class="card-action  pink darken-2">
+                                        <div id="invoice-line" class="center-align"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content red lighten-1 white-text">
+                                        <p class="card-stats-title"><i class="mdi-action-schedule"></i> running</p>
+                                        <h4 class="card-stats-number">{{runnum}}</h4>
+                                    </div>
+                                    <div class="card-action  grey darken-2">
+                                        <div id="invoice-line" class="center-align"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content blue lighten-1 white-text">
+                                        <p class="card-stats-title"><i class="mdi-action-lock-outline"></i> finish</p>
+                                        <h4 class="card-stats-number">{{finnum}}</h4>
+                                    </div>
+                                    <div class="card-action  pink darken-2">
+                                        <div id="invoice-line" class="center-align"></div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+ 
+        <div class="row">
+        <div class="col s12">
+<div id="card-alert" class="card pink lighten-5">
+<div class="card-content pink-text darken-1">
+<span class="card-title pink-text darken-1">提示</span>
+<p>30秒后页面会自动刷新一次</p>
+</div>
+
+<button type="button" class="close pink-text" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+
+
+</div>
+</div>
+<script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Type', 'Num'],
+          ['No vul', {{vulnerability['Novul']}}],
+          ['XSS',  {{vulnerability['xss']}} ],
+          ['SQLi',  {{vulnerability['sqli']}}],
+          ['xpath', {{vulnerability['xpath']}}],
+          ['lfi', {{vulnerability['lfi']}}],
+          ['ldap', {{vulnerability['ldap']}}],
+          ['SQL_time', {{vulnerability['sqli_time']}}],
+        ]);
+
+      var options = {
+        legend: 'none',
+        pieSliceText: 'label',
+        title: '漏洞分布/Vulnerability Distrubution',
+        pieStartAngle: 100,
+          slices: {
+            0: { color: '#00DD00' }
+          }
+      };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+<div id="piechart" style="width: 50%; height: 400px;float: right"></div>
+<script type="text/javascript">
+      google.charts.setOnLoadCallback(drawChart1);
+      function drawChart1() {
+        var data = google.visualization.arrayToDataTable([
+          ['Type', 'Num'],
+          ['Safe',  {{safe_num}} ],
+          ['Vulnerable',  {{vul_num}} ],
+        ]);
+
+        var options1 = {
+          title: 'URL安全比例',
+          pieHole: 0.4,
+          slices: {
+            0: { color: '#00DD00' },
+            1: { color: '#CC0000' }
+          }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options1);
+      }
+    </script>
+<div id="donutchart" style="width: 50%; height: 400px;float:left"></div>
+<div class="row">
+ 
+              
+
+                        <div class="row">
+                            <div class="col s12">
+                                <ul id="projects-collection" class="collection">
+                                    <li class="collection-item avatar">
+                                        <i class="mdi-file-folder circle light-blue darken-2"></i>
+                                        <span class="collection-header">Discovery</span>
+                                        <p>已发现漏洞数量及细节</p>
+                                        <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s6">
+                                              <div class="chip amber darken-4 white-text">
+<img src="static/images/map-marker.png" alt="Materialize">
+XSS
+</div>
+                                                <p class="collections-content">跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
+                                            </div>
+                                            <div class="col s3">
+                                                <span class="task-cat cyan">{{xssnum}}</span>
+                                            </div>
+                                            <div class="col s3">
+                                                <a class="btn waves-effect waves-light  blue" href="/xss.scan"  target="_blank">命中细节</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                <div class="chip yellow lighten-2 white-text">
+<img src="static/images/map-marker.png">
+SQLI
+</div>
+                                                <p class="collections-content">SQL攻击（SQL injection），简称注入攻击，是发生于应用程序之数据库层的安全漏洞。简而言之，是在输入的字符串之中注入SQL指令，在设计不良的程序当中忽略了检查，那么这些注入进去的指令就会被数据库服务器误认为是正常的SQL指令而运行，因此遭到破坏或是入侵。
+</p>
+                                            </div>
+                                            <div class="col s3">
+                                                <span class="task-cat green darken-3">{{sqlinum}}</span>
+                                            </div>
+                                            <div class="col s3">
+                                                <a class="btn waves-effect waves-light  indigo" href="/sqli.scan"  target="_blank">命中细节</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                <div class="chip grey lighten-2 white-text">
+<img src="static/images/map-marker.png">
+XPATH
+</div>
+                                                <p class="collections-content">XPath即为XML路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的语言。
+</p>
+                                            </div>
+                                            <div class="col s3">
+                                                <span class="task-cat teal">{{xpathnum}}</span>
+                                            </div>
+                                            <div class="col s3">
+                                                <a class="btn waves-effect waves-light  deep-purple" href="/xpath.scan"  target="_blank">命中细节</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s6">
+                                               <div class="chip cyan lighten-2 white-text">
+<img src="static/images/map-marker.png">
+LDAP
+</div>
+                                                <p class="collections-content">轻型目录存取协定（英文：Lightweight Directory Access Protocol）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。 </p>
+                                            </div>
+                                            <div class="col s3">
+                                                <span class="task-cat black">{{ldapnum}}</span>
+                                            </div>
+                                            <div class="col s3">
+                                               <a class="btn waves-effect waves-light  cyan" href="/ldap.scan"  target="_blank">命中细节</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s6">
+                                               <div class="chip teal lighten-2 white-text">
+<img src="static/images/map-marker.png">
+LFI
+</div>
+                                               <p>
+本地文件包含
+</p>
+                                            </div>
+                                            <div class="col s3">
+                                                <span class="task-cat green">{{lfinum}}</span>
+                                            </div>
+                                            <div class="col s3">
+                                                <a class="btn waves-effect waves-light  green" href="/lfi.scan"  target="_blank">命中细节</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                 <div class="chip brown lighten-2 white-text">
+<img src="static/images/map-marker.png">
+sqli_time
+</div>
+                                                <p class="collections-content"></p><p>
+延时注入，基于时间
+</p>
+                                            </div>
+                                            <div class="col s3">
+                                                <span class="task-cat green">{{sqli_timenum}}</span>
+                                            </div>
+                                      <div class="col s3">
+                                                <a class="btn waves-effect waves-light  deep-purple" href="/sqli_time.scan"  target="_blank">命中细节</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            
+
+          <div class="col s12 dowebok">
+            <ul class="collection" id="recent10reqs">
+              {% for recentrunning in recent10running %}
+              <li class="collection-item avatar selected">
+                <img src="static/images/web.jpg" alt="" class="circle">
+              <a href="raw/{{recentrunning["hash"]}}">
+              <span class="email-title">{{recentrunning["host"]}}</span>
+              <p class="truncate grey-text ultra-small">{{recentrunning["url"]}}</p>
+              </a>
+              </li>
+              {% end %}
+            </ul>
+          </div>
+  <div class="col s12">
+ 
+
+  <div id="card-alert" class="card deep-purple">
+<div class="card-content white-text">
+ <i class="mdi-action-extension">scapy抓取到的请求中最新的10条</i>
+</div>
+<button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<table class="striped">
+ <thead>
+            <tr>
+                <th data-field="view">
+                view
+              </th>
+              <th data-field="method">
+                method
+              </th>
+              <th data-field="host">
+                host
+              </th>
+              <th data-field="url">
+                url
+              </th>
+              <th data-field="postdata">
+                postdata
+              </th>
+              <th data-field="hash">
+                hash
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+                    {% for jsonedurl in recent10reqs%}
+            <tr>
+                <td>
+            <a href="/raw/{{jsonedurl['hash']}}">view source</a>
+                <td>
+              <td>
+                {{jsonedurl['method']}}
+              </td>
+              <td>
+                {{jsonedurl['host']}}
+              </td>
+              <td>
+                {{jsonedurl['url']}}
+              </td>
+              <td>
+                {{jsonedurl['postdata']}}
+              </td>
+              <td>
+                {{jsonedurl['hash']}}
+              </td>
+            </tr>
+                    {% end %}
+            </tbody>
+            </table>
+</div>
+
+
+
+
+
+
+{% end %}
+{% block yourjs %}
+var int=self.setInterval("fresh()",30000)
+function fresh()
+  {
+    window.location.reload();
+  }       
+
+
+$(function(){
+  $('.dowebok').liMarquee({
+    direction: 'up'
+  });
+});
+
+{% end %}
+
