@@ -40,11 +40,11 @@ Put requests into redis server to scan.
 def get_hash(host, uri, postdata):
     request = 'http://' + host + urlparse.urlparse(uri).path
     dic = urlparse.urlparse(uri).query.split('&')
-        for d in dic:
-            request += d.split('=')[0]+'=&'
+    for d in dic:
+        request += d.split('=')[0]+'=&'
     request += "|"
-        for d in self.headers['postdata'].split('&'):
-            request += d.split('=')[0]+'=&'
+    for d in self.headers['postdata'].split('&'):
+        request += d.split('=')[0]+'=&'
     url_hash = md5(request).hexdigest()
     return url_hash
 
