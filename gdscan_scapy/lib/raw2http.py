@@ -32,9 +32,17 @@ class Http_body:
         path=request.path
         path=path.split(".")[-1].lower().replace(' ','')
         #print path,url
-        black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,flv,js,css,jpg,png,jpeg,gif,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg'
+        black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,flv,js,css,jpg,png,jpeg,gif,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx'
         black_domain='ditu.google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com'
-        if path.lower() in black_ext:
+        with open('../white_domain.conf') as white:
+            white_domain = white.readline().strip('\n').strip('\r')
+            if white_domain != "":
+                for domain in white_domain.split(','):
+                    if not re.search(white_domain,request.netloc.lower()):
+                        return
+            else:
+                pass
+        if path.lower() in black_ext.split(','):
             return False
 
         host=request.hostname.lower()

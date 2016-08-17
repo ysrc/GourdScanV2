@@ -19,11 +19,13 @@
 `python sqlmapapi.py -s  -H 0.0.0.0 -p 8776`启动sqlmapapi  
 `python selfscan.py` 启动工作端，从数据库获取请求并加上payload进行测试  
 `python app.py --address=0.0.0.0 --port=99`启动web界面，监听于99端口  
-之后在配置文件里填好redis与sqlmapapi的配置信息
+`之后在配置文件里填好redis与sqlmapapi的配置信息`
+`在'gdscan_scapy/lib/raw2http.py'中和mix_proxy.py中存在domain域名黑名单和ext后缀黑名单，如果需要可以自行更改`
+`在'gdscan_scapy/white_domain.py'中存在域名白名单，如果不需要过滤域名，请保持其为空，如果需要过滤，用','隔开，用正则表达式过滤。比如需要过滤"*.ly.com"，应填写"(.+)\.ly\.com"`
 
 ### 生产者 (gdscan_scapy)
-`python proxy_io.py` 运行代理，浏览器使用这个代理(比较稳定)  
-或者使用较新的`python mix_proxy.py`(相对不太稳定，在访问https站点中经常飘红，因为不信任证书的问题，下文有QA解答，至于代理证书的安全性，可以不使用已经提供的证书，新证书的生成方法：`openssl req -new -x509 -days 365 -nodes -out key.cet -keyout key.pem`)  
+`python proxy_io.py` 运行代理，端口默认为10806，浏览器使用这个代理(比较稳定)  
+或者使用较新的`python mix_proxy.py`(端口默认为10086，相对不太稳定，在访问https站点中经常飘红，因为不信任证书的问题，下文有QA解答，至于代理证书的安全性，可以不使用已经提供的证书，新证书的生成方法：`openssl req -new -x509 -days 365 -nodes -out key.cet -keyout key.pem`)  
 如果是需要做流量检测，可以使用`python scapyscan.py`来对某个网卡或者全局进行检测。
 
 ### web界面
@@ -100,6 +102,8 @@
    A：`即使信任了某个站点，也不意味着信任了其子域名或其他域名，如果该站点从其他站点加载https数据，则需要将其一样信任，chrome下具体方式是打开浏览器开发者选项(f12或command+i)，点击"network"，重新刷新页面，双击红色的url，并信任该域，再次刷新重复上述步骤，直到可以完全加载出来。`  
 (2)Q：`引入scapy module的时候显示缺少libdnet`  
    A：`在所需环境中有libdnet及其依赖的安装方式`
+(3)Q: win安装模块的时候提示“python version 2.7 is required, but not found”
+   A： python 64位版本在注册表中的信息与32位版本的不一样，所以在注册表里面找不到python的位置，谷歌搜索下”python version 2.7 is required“就出来了。  
   
 ##4.To Do  
 (1)优化测试url参数，减少重复。  
