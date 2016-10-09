@@ -40,12 +40,12 @@ White_domain are loaded from white_domain.conf split by "," in one line!
 '''
 
 def get_hash(host, uri, postdata):
-    request = 'http://' + host + urlparse.urlparse(uri).path
+    request = 'http://' + host + urlparse.urlparse(uri).path + "?"
     dic = urlparse.urlparse(uri).query.split('&')
     for d in dic:
         request += d.split('=')[0]+'=&'
     request += "|"
-    for d in self.headers['postdata'].split('&'):
+    for d in postdata.split('&'):
         request += d.split('=')[0]+'=&'
     url_hash = md5(request).hexdigest()
     return url_hash
