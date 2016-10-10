@@ -121,6 +121,7 @@
 
 
 ##6.本程序已经部署在docker中  
+链接: https://pan.baidu.com/s/1miLKhW8 密码: thrf
 ssh密码：    
 gourdscan_admin123~  
 redis:  
