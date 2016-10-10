@@ -120,7 +120,7 @@
 感谢项目中使用的sqlmap等开源项目、为本项目开发做出贡献的【|→上善若水】童鞋、mottoin.com网站和其他对本项目有帮助的朋友。   
 
 
-##6.本程序已经部署在docker中  
+##6.本程序已有docker镜像  
 链接: https://pan.baidu.com/s/1miLKhW8 密码: thrf
 ssh密码：    
 gourdscan_admin123~  
