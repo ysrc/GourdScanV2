@@ -121,7 +121,7 @@
 
 
 ##6.本程序已有docker镜像  
-链接: https://pan.baidu.com/s/1miLKhW8 密码: thrf
+链接: https://pan.baidu.com/s/1miLKhW8 密码: thrf  
 ssh密码：    
 gourdscan_admin123~  
 redis:  
