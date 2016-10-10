@@ -1,4 +1,4 @@
-#Gourscan v2.0
+#Gourdscan v2.0
 
 2016/09/25 update
 
