@@ -20,7 +20,7 @@
 `python selfscan.py` 启动工作端，从数据库获取请求并加上payload进行测试  
 `之后在配置文件里填好redis与sqlmapapi的配置信息`
 `在'gdscan_scapy/lib/raw2http.py'中和mix_proxy.py中存在domain域名黑名单和ext后缀黑名单，如果需要可以自行更改`
-`在'gdscan_scapy/white_domain.py'中存在域名白名单，如果不需要过滤域名，请保持其为空，如果需要过滤，用','隔开，用正则表达式过滤。比如需要过滤"*.ly.com"，应填写"(.+)\.ly\.com"`
+`在'gdscan_scapy/white_domain.conf'中存在域名白名单，如果不需要过滤域名，请保持其为空，如果需要过滤，用','隔开，用正则表达式过滤。比如需要过滤"*.ly.com"，应填写"(.+)\.ly\.com"`
 
 ### 生产者 (gdscan_scapy)
 `python proxy_io.py` 运行代理，端口默认为10806，浏览器使用这个代理(比较稳定)  
