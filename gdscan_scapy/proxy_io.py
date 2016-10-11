@@ -92,6 +92,38 @@ class ProxyHandler(tornado.web.RequestHandler):
         if body:
             requests+="\r\n%s"%body
         #print requests
+    def get_hash(self, host, postdata):
+        request = 'http://' + host + urlparse(self.request.uri).path + "?"
+        dic = urlparse(self.request.uri).query.split('&')
+        for d in dic:
+            request += d.split('=')[0]+'=&'
+        request += "|"
+        for d in postdata.split('&'):
+            request += d.split('=')[0]+'=&'
+        url_hash = md5(request).hexdigest()
+        return url_hash
+    def insert_redis(self, b64req, hash, host):
+        path = self.request.uri.split('?')[0]
+        black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx'
+        black_domain='ditu.google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com'
+        with open('white_domain.conf') as white:
+            white_domain = white.readline().strip('\n').strip('\r')
+            if white_domain != "":
+                for domain in white_domain.split(','):
+                    if not re.search(white_domain,host.lower()):
+                        return
+            else:
+                pass
+
+        for ext in black_ext.split(','):
+            if path.lower().endswith(ext):
+                return
+        for domain in black_domain.split(','):
+            if host.lower().split(':')[0].endswith(domain):
+                return
+        if r.hsetnx("request", hash, b64req):
+            r.lpush("waiting", hash)
+
     @tornado.web.asynchronous
     def get(self):
         logger.debug('Handle %s request to %s', self.request.method,
@@ -139,15 +171,10 @@ class ProxyHandler(tornado.web.RequestHandler):
             url=urlparse(request_dict['uri'])
             request_dict['host']= url.netloc
             request_dict['url']= request_dict['uri'].split(url.netloc)[-1]
-            puuu = request_dict['postdata']
-            identity=request_dict['uri']+request_dict['body']
-            request_dict['hash']= md5(identity).hexdigest()
+            request_dict['hash']= self.get_hash(request_dict['host'], request_dict['postdata'])
             #print "="*10, "Got one:", request_dict
             b64req =  es(json.dumps(request_dict))
-            if r.hsetnx("request", request_dict['hash'], b64req):
-                r.lpush("waiting", request_dict['hash'])
-            else:
-                pass
+            self.insert_redis(b64req, request_dict['host'], request_dict['host'])
 
         except tornado.httpclient.HTTPError as e:
             if hasattr(e, 'response') and e.response:

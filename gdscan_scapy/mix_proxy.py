@@ -167,7 +167,7 @@ def get_res(data, connstream, https):
 def content_deal(headers, host, method, postdata, uri):
     u = urlparse.urlparse(uri)
     url = uri.split(u.netloc)[-1]
-    black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,flv,js,css,jpg,png,jpeg,gif,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx'
+    black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx'
     black_domain='ditu.google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com'
     with open('white_domain.conf') as white:
         white_domain = white.readline().strip('\n').strip('\r')
@@ -190,7 +190,6 @@ def content_deal(headers, host, method, postdata, uri):
         b64req = base64.encodestring(json.dumps(request))
         if r.hsetnx("request", reqhash, b64req):
             r.lpush("waiting", reqhash)
-
 
 def client_conn(connstream, https=False):
     try:
@@ -237,5 +236,5 @@ if __name__ == '__main__':
         port = int(sys.argv[1])
     if len(sys.argv) >= 3:
         port = int(sys.argv[2])
-        address = sys.argv[1]
+        addr = sys.argv[1]
     main(addr, port)
