@@ -107,6 +107,8 @@
    A：`在所需环境中有libdnet及其依赖的安装方式`  
 (3)Q: win安装模块的时候提示“python version 2.7 is required, but not found”
    A： python 64位版本在注册表中的信息与32位版本的不一样，所以在注册表里面找不到python的位置，谷歌搜索下”python version 2.7 is required“就出来了。  
+(4)Q：`linux下启动redis提示“Bad directive or wrong number of arguments”`
+   A：redis版本太低，建议官网下载3.2以上版本再使用本conf文件，或者不使用提供这里的conf文件。
   
 ##4.To Do  
 (1)优化测试url参数，更有效地减少重复。  
