@@ -28,7 +28,7 @@ class Http_body:
         #print path,url
         black_ext='css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,flv,js,css,jpg,png,jpeg,gif,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg'
         black_domain='ditu.google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com'
-        if path.lower() in black_ext:
+        if path.lower() in black_ext.split(','):
             return False
 
         host=request.hostname.lower()

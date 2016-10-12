@@ -46,7 +46,7 @@ def Start_Scan(nothing):
             continue
         request = json.loads(ds(reqed))
 
-        rules=['xss','sqli','xpath','ldap','lfi','sqli_time']
+        rules=['xss','xpath','ldap','lfi']#rrules=['xss','sqli','xpath','ldap','lfi','sqli_time']
         for rule in rules:
             try:
                 if rule == 'sqli' and USESQLMAPAPI:
