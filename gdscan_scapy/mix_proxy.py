@@ -193,7 +193,7 @@ def content_deal(headers, host, method, postdata, uri):
 
 def client_conn(connstream, https=False):
     try:
-        connstream.settimeout(0.5)
+        connstream.settimeout(2)
         data = ""
         while True:
             tmp = connstream.recv(10240)
