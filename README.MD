@@ -29,7 +29,7 @@
 #####注意：不要在嗅探流量的同时，在本机开启sqlmap等程序，否则这些流量也会被加入到redis中形成死循环！！！
 
 ### web界面
-可以在worker所在机器上启动`python app.py --address=0.0.0.0 --port=99`#监听于99端口  
+可以在worker所在机器上启动`python app.py --address=0.0.0.0 --port=80`#监听于80端口  
 
 
 ## 1、 运行逻辑
@@ -128,3 +128,5 @@ ssh密码：
 gourdscan_admin123~  
 redis:  
 redis-server ~/GourdScan_v2/redis.conf  
+个人在虚拟机下的测试，在docker下注意端口映射的问题和web端口等，至于代理等，安全原因不建议对外开放，所以默认bind的ip是127.0.0.1，如果是在docker中或者希望对外部开放，指定的ip应该是0.0.0.0：
+![caozuo](https://cloud.githubusercontent.com/assets/10612232/19591585/56b0257c-97aa-11e6-9851-4f6b302d7b87.png)
