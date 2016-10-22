@@ -73,10 +73,10 @@ def get_str(res):
     reason = res.reason
     data = ''
     headers = res.headers
-    if 'Content-Encoding' in headers.keys():
-        del headers['Content-Encoding']
-    if 'Transfer-Encoding' in headers.keys():
-        del headers['Transfer-Encoding']
+    wrong_head = ['Content-Encoding','Transfer-Encoding','content-encoding','transfer-encoding']
+    for i in wrong_head:
+        if i in headers.keys():
+            del headers[i]
     headers['Content-Length'] = len(res.content)
     data += 'HTTP/1.1 %s %s\r\n' % (code, reason)
     for key in res.headers.keys():
