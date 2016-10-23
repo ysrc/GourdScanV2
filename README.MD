@@ -1,5 +1,27 @@
 #Gourdscan v2.0
 
+2016/10/23 update
+在上个update中的docker镜像中出现了一些问题，具体表现在镜像中的Gourdscan非最新版及python ssl模块无法在ubuntu 14.04中正常使用，所以不建议使用。
+新的ubuntu16.04 64位 docker镜像：
+
+
+使用方法：
+cat gourdscan.tar | sudo docker import - gourdscan:v2.0
+docker run -d -p 10022:22 -p 10086:10086 -p 10080:80 gourdscan:v2.0 /usr/sbin/sshd -D
+ssh root@127.0.0.1 -p 10022
+gourdscan_admin123~
+多开几个窗口执行(或者先获取数据包，运行完后再运行消费者)：
+redis-server ~/GourdScanV2/redis.conf
+cd ~/GourdScanV2/gdscan_scapy/&& python ~/GourdScanV2/gdscan_scapy/mix_proxy.py 0.0.0.0 10086(一定要进入gdscan_scapy目录，或者cd ~/GourdScanV2/gdscan_scapy/ && python ~/GourdScanV2/gdscan_scapy/proxy_io.py 10086)
+cd ~/GourdScanV2/ScanerUI && python app.py --address=0.0.0.0 --port=80
+cd ~/sqlmap/ && python sqlmapapi.py -s  -H 127.0.0.1 -p 8776
+cd ~/GourdScanV2/gdscan_worker/ && python selfscan.py
+
+
+另外还有一些bug已经搜集，将在以后的update中解决，欢迎提交issue，最好能带上原因和详情方便debug
+本次update：
+1.修复未调用sqlmapapi
+2.修复mix_proxy可能出现的代理头错误导致代理失败问题
 2016/09/25 update
 
 与`第一版`Gourdscan比较
@@ -24,7 +46,7 @@
 
 ### 生产者 (gdscan_scapy)
 `python proxy_io.py` 运行代理，端口默认为10806，浏览器使用这个代理(比较稳定)  
-或者使用较新的`python mix_proxy.py`(端口默认为10086，相对不太稳定，在访问https站点中经常飘红，因为不信任证书的问题，下文有QA解答，至于代理证书的安全性，可以不使用已经提供的证书，新证书的生成方法：`openssl req -new -x509 -days 365 -nodes -out key.cet -keyout key.pem`)  
+或者使用较新的`python mix_proxy.py`(端口默认为10086，相对不太稳定，速度较慢，在访问https站点中经常飘红，因为不信任证书的问题，下文有QA解答，至于代理证书的安全性，可以不使用已经提供的证书，新证书的生成方法：`openssl req -new -x509 -days 365 -nodes -out key.cet -keyout key.pem`)  
 如果是需要做流量检测，可以使用`python scapyscan.py`来对某个网卡或者全局进行检测。
 #####注意：不要在嗅探流量的同时，在本机开启sqlmap等程序，否则这些流量也会被加入到redis中形成死循环！！！
 
@@ -123,7 +145,8 @@
 
 
 ##6.本程序已有docker镜像  
-链接: https://pan.baidu.com/s/1miLKhW8 密码: thrf  
+
+感谢一些朋友的指出和支持，最初分享的docker镜像存在一些问题，所以不建议使用，但是仍然会保留
 ssh密码：    
 gourdscan_admin123~  
 redis:  
