@@ -1,33 +1,34 @@
 #Gourdscan v2.0
 
-2016/10/23 update
-在上个update中的docker镜像中出现了一些问题，具体表现在镜像中的Gourdscan非最新版及python ssl模块无法在ubuntu 14.04中正常使用，所以不建议使用。
-新的ubuntu16.04 64位 docker镜像：
+2016/10/23 update  
+在上个update中的docker镜像中出现了一些问题，具体表现在镜像中的Gourdscan非最新版及python ssl模块无法在ubuntu 14.04中正常使用，所以不建议使用。  
+新的ubuntu16.04 64位 docker镜像：  
+https://pan.baidu.com/s/1jINkSdS  
 
+使用方法：  
+`cat gourdscan.tar | sudo docker import - gourdscan:v2.0`  
+`docker run -d -p 10022:22 -p 10086:10086 -p 10080:80 gourdscan:v2.0 /usr/sbin/sshd -D`  
+`ssh root@127.0.0.1 -p 10022`  
+gourdscan_admin123~  
+多开几个窗口执行(或者先获取数据包，运行完后再运行消费者)：  
+`redis-server ~/GourdScanV2/redis.conf`  
+`cd ~/GourdScanV2/gdscan_scapy/&& python ~/GourdScanV2/gdscan_scapy/mix_proxy.py 0.0.0.0 10086(一定要进入gdscan_scapy目录，或者cd ~/GourdScanV2/gdscan_scapy/ && python   ~/GourdScanV2/gdscan_scapy/proxy_io.py 10086)`  
+`cd ~/GourdScanV2/ScanerUI && python app.py --address=0.0.0.0 --port=80`  
+`cd ~/sqlmap/ && python sqlmapapi.py -s  -H 127.0.0.1 -p 8776`  
+`cd ~/GourdScanV2/gdscan_worker/ && python selfscan.py`  
+  
+  
+另外还有一些bug已经搜集，将在以后的update中解决，欢迎提交issue，最好能带上原因和详情方便debug  
+本次update：  
+`1.修复未调用sqlmapapi`  
+`2.修复mix_proxy可能出现的代理头错误导致代理失败问题`  
+  
+2016/09/25 update  
+  
+与`第一版`Gourdscan比较  
 
-使用方法：
-cat gourdscan.tar | sudo docker import - gourdscan:v2.0
-docker run -d -p 10022:22 -p 10086:10086 -p 10080:80 gourdscan:v2.0 /usr/sbin/sshd -D
-ssh root@127.0.0.1 -p 10022
-gourdscan_admin123~
-多开几个窗口执行(或者先获取数据包，运行完后再运行消费者)：
-redis-server ~/GourdScanV2/redis.conf
-cd ~/GourdScanV2/gdscan_scapy/&& python ~/GourdScanV2/gdscan_scapy/mix_proxy.py 0.0.0.0 10086(一定要进入gdscan_scapy目录，或者cd ~/GourdScanV2/gdscan_scapy/ && python ~/GourdScanV2/gdscan_scapy/proxy_io.py 10086)
-cd ~/GourdScanV2/ScanerUI && python app.py --address=0.0.0.0 --port=80
-cd ~/sqlmap/ && python sqlmapapi.py -s  -H 127.0.0.1 -p 8776
-cd ~/GourdScanV2/gdscan_worker/ && python selfscan.py
-
-
-另外还有一些bug已经搜集，将在以后的update中解决，欢迎提交issue，最好能带上原因和详情方便debug
-本次update：
-1.修复未调用sqlmapapi
-2.修复mix_proxy可能出现的代理头错误导致代理失败问题
-2016/09/25 update
-
-与`第一版`Gourdscan比较
-
-- 不同:
- - 用`redis`作为数据库而不是`mysql`。
+- 不同:  
+ - 用`redis`作为数据库而不是`mysql`。  
  - `webui`改为基于`tornado`，不再需要php环境。
  - `proxy`改为`http+https`混合代理，大部分网站均可测试。
  - 使用了`python scapy`模块指定网卡抓http包，可以有效通过混杂模式获取通过本机的流量并测试，而无需设置代理。
