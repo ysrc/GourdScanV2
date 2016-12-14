@@ -1,6 +1,9 @@
 #Gourdscan v2.0
 
-2016/10/23 update  
+2016/12/14 update   
+V2.1正在开发中，主要改进方向是web界面，一键启动，web界面配置参数, paketbeat接口等，如果有什么建议，欢迎在issue中提出。
+
+2016/10/23 update  
 在上个update中的docker镜像中出现了一些问题，具体表现在镜像中的Gourdscan非最新版及python ssl模块无法在ubuntu 14.04中正常使用，所以不建议使用。  
 新的ubuntu16.04 64位 docker镜像：  
 https://pan.baidu.com/s/1jINkSdS  
