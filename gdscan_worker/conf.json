@@ -1,5 +1,0 @@
-{
-"sqlmapapi_cluster": ["http://127.0.0.1:8775", "http://127.0.0.1:8776"],
-"use_sqlmapapi": 1, 
-"redis": {"host": "127.0.0.1", "password": "test123", "port": 6379}
-}
