@@ -14,6 +14,9 @@ Gourdscan V2.1相对之前的版本，有着以下改进：
 
 ###关于使用方法：
 ```python start.py```即可   
+用户名密码均存在conf.json中   
+默认平台用户名密码为：admin:Y3rc_admin
+默认redis密码为：Y3rc_Alw4ys_B3_W1th_Y0u
 如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。   
 必要环境：   
 pip install requests   
