@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-10 col-md-10">
+                <div class="panel panel-{{stat}}" style="margin-left:20%">
+                    <div class="panel-heading">Request URL</div>
+                    <div class="panel-body">
+                    {{request['url']}}<br>
+                    Security Stat: {{stat}}
+                    </div>
+                </div>
+            </div>
+            {% if results != "" %}
+            {% for item in results.keys() %}
+            <div class="col-lg-9 col-md-9">
+                <div class="panel panel-{{results[item]['stat']}}" style="margin-left:33%">
+                    <div class="panel-heading">{{item}} Scan Results</div>
+                    {% for result in results[item]['message'] %}
+                    <div class="panel-body">
+                        {% for payload in result.split("|#|") %}
+                        {{payload}}<br>
+                        {% end %}
+                    </div>
+                    {% end %}
+                </div>
+            </div>
+            {% end %}
+            {% end %}
+            <div class="col-lg-10 col-md-10">
+                <div class="panel panel-default" style="margin-left:20%">
+                    <div class="panel-heading">Request Packet</div>
+                    <div class="panel-body">
+                    <textarea class="form-control" rows="13">{{request['packet']}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}

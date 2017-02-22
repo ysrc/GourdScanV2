@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-10 col-md-10">
+                <div class="card-box" style="margin-left: 20%">
+                    <h3>{{proxy_type}} Config:</h3>
+                    <form action="/proxy?type={{proxy_type}}" method="post">
+                        {% for item in conf.keys() %}
+                        <div class="form-inline">
+                            <label class="form-label config-label">{{item}}:</label>
+                            <input type="text" value="{{conf[item]}}" class="form-control config-input" name="{{item}}">
+                        </div>
+                        {% end %}
+                        <br>
+                        <button type="submit" class="btn btn-danger btn-lg btn-block">Update Proxy Config</button>
+                    </form><br>
+                    <button onclick="window.location.href='/del?type=flushdb'" class="btn btn-danger btn-lg btn-block">Flush redis db!!!</button><br>
+                    {% if stat == "True" %}
+                    <button onclick="window.location.href='/proxy?type={{proxy_type}}&stat=False'" class="btn btn-danger btn-lg btn-block">Stop Proxy</button>
+                    {% else %}
+                    <button onclick="window.location.href='/proxy?type={{proxy_type}}&stat=True'" class="btn btn-success btn-lg btn-block">Start Proxy</button>
+                    {% end %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}

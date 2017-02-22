@@ -1,0 +1,165 @@
+{% extends "layout.html" %} 
+{% block content %}
+        <div class="container">
+            <div class="col-md-12">
+                {% if scan_stat == "True" %}
+                <button style="width:50%;margin:2% 25% 0 25%" onclick="window.location.href='/scan_stat?stat=False'" class="btn btn-danger btn-lg btn-block"> Stop Gourdscan Scanner </button><br>
+                {% else %}
+                <button style="width:50%;margin:2% 25% 0 25%" onclick="window.location.href='/scan_stat?stat=True'" class="btn btn-success btn-lg btn-block"> Start Gourdscan Scanner </button><br>
+                {% end %}
+                <div class="row">
+                    <form action="/scan_config" method="post">
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Sqlireflect Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlireflect_start" value="false" {{start['sqlireflect_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlireflect_start" value="true" {{start['sqlireflect_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="sqlireflect_rule" style="width:100%" rows="8">{{rules['sqlireflect']}}</textarea>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Sqlitime Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlitime_start" value="false" {{start['sqlitime_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlitime_start" value="true" {{start['sqlitime_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="sqlitime_rule" style="width:100%" rows="8">{{rules['sqlitime']}}</textarea>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Sqlmap Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlmap_start" value="false" {{start['sqlmap_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlmap_start" value="true" {{start['sqlmap_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Sqlmap Api:</label>
+                                <input class="form-control config-input" type="text" name="sqlmap_api" value="{{sqlmap_api}}">  
+                                <div class="form-inline">
+                                    <label class="form-label config-label">Sqlmap Rules:</label>
+                                    <textarea class="form-control" name="sqlmap_rule" style="width:100%" rows="6">{{rules['sqlmap']}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Sqlibool Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlibool_start" value="false" {{start['sqlibool_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="sqlibool_start" value="true" {{start['sqlibool_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="sqlibool_rule" style="width:100%" rows="8">{{rules['sqlibool']}}</textarea>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Xss Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="xss_start" value="false" {{start['xss_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="xss_start" value="true" {{start['xss_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="xss_rule" style="width:100%" rows="8">{{rules['xss']}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Lfi Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="lfi_start" value="false" {{start['lfi_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="lfi_start" value="true" {{start['lfi_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="lfi_rule" style="width:100%" rows="8">{{rules['lfi']}}</textarea>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Ldap Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="ldap_start" value="false" {{start['ldap_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="ldap_start" value="true" {{start['ldap_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="ldap_rule" style="width:100%" rows="8">{{rules['ldap']}}</textarea>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Xpath Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan Or Not:</label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="xpath_start" value="false" {{start['xpath_false']}}> False 
+                                </label>
+                                <label class="checkbox-inline" style="float:right">
+                                  <input type="radio" name="xpath_start" value="true" {{start['xpath_true']}}> True 
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Rule:</label>
+                                <textarea class="form-control" name="xpath_rule" style="width:100%" rows="8">{{rules['xpath']}}</textarea>
+                            </div>
+                        </div>
+                     </div>
+                     <button type="submit" style="width:100%" class="btn btn-danger btn-lg btn-block"> Update Config All </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% end %}

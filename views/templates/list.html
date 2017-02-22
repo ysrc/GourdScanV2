@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="cardbox">
+                    <ul class="pagination">
+                        <li><a href="/list?type={{list_type}}&start=0" aria-label="first"><span aria-hidden="true">&laquo;</span></a></li>
+                        {% for item in pages %}
+                        {% if item == page_now %}
+                        <li class="active"><a href="/list?type={{list_type}}&start={{item * page_num - page_num}}">{{item}} <span class="sr-only">(current)</span></a></li>
+                        {% else %}
+                        <li><a href="/list?type={{list_type}}&start={{item * page_num - page_num}}">{{item}} <span class="sr-only">(current)</span></a></li>
+                        {% end %}
+                        {% end %}
+                        <li><a href="/list?type={{list_type}}&start={{end_num}}" aria-label="first"><span aria-hidden="true">&raquo;</span></a></li>
+                    </ul>
+                    <button style="float:right;margin:20px 0" class="btn btn-danger btn-lg" onclick="window.location.href='/del?type={{list_type}}'">Del all</button>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h1>{{list_type}}: {{length}} Reqs</h1></div>
+                        <table class="table">
+                            <tr>
+                                <th>Request Hash</th>
+                                <th>Method</th>
+                                <th>Url</th>
+                            </tr>
+                            {% for item in content %}
+                            <tr>
+                                <td><a href="req?hash={{item}}">{{item}}</a></td>
+                                <td>{{req_content[item].split("|")[0]}}</td>
+                                <td><a target="_blank" href="{{req_content[item].split("|")[1]}}">{{req_content[item].split("|")[1]}}</a></td>
+                            </tr>
+                            {% end %}
+                        </table>
+                    </div>
+                    <ul class="pagination">
+                        <li><a href="/list?type={{list_type}}&start=0" aria-label="first"><span aria-hidden="true">&laquo;</span></a></li>
+                        {% for item in pages %}
+                        {% if item == page_now %}
+                        <li class="active"><a href="/list?type={{list_type}}&start={{item * page_num - page_num}}">{{item}} <span class="sr-only">(current)</span></a></li>
+                        {% else %}
+                        <li><a href="/list?type={{list_type}}&start={{item * page_num - page_num}}">{{item}} <span class="sr-only">(current)</span></a></li>
+                        {% end %}
+                        {% end %}
+                        <li><a href="/list?type={{list_type}}&start={{end_num}}" aria-label="first"><span aria-hidden="true">&raquo;</span></a></li>
+                    </ul>
+                    <button style="float:right;margin:20px 0" class="btn btn-danger btn-lg" onclick="window.location.href='/del?type={{list_type}}'">Del all</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
