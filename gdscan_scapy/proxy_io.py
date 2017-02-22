@@ -174,7 +174,7 @@ class ProxyHandler(tornado.web.RequestHandler):
             request_dict['hash']= self.get_hash(request_dict['host'], request_dict['postdata'])
             #print "="*10, "Got one:", request_dict
             b64req =  es(json.dumps(request_dict))
-            self.insert_redis(b64req, request_dict['host'], request_dict['host'])
+            self.insert_redis(b64req, request_dict['hash'], request_dict['host'])
 
         except tornado.httpclient.HTTPError as e:
             if hasattr(e, 'response') and e.response:
