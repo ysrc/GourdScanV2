@@ -1,7 +1,7 @@
 {
 "scapy_network_card": "all",
 "scan_stat": "false",
-"check_url": "http://sec.ly.com/gourdscanv2/version",
+"check_url": "http://sec.ly.com/gourdscanv2/version.txt",
 "threads_num": "20",
 "ip": "0.0.0.0",
 "page_num": "100",
