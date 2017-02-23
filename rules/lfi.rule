@@ -27,7 +27,6 @@
             java.lang.IllegalArgumentException\:
             java.net.MalformedURLException\:
             The server encountered an internal error \(.*\) that prevented it from fulfilling this request.
-            The requested resource \(.*\) is not available.
             fread\(\)\:
             for inclusion '\(include_path=
             Failed opening requiredv
