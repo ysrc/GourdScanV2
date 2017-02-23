@@ -19,6 +19,7 @@ RUN cd /libdnet-master && ./configure
 RUN cd libdnet-master && make && make install
 RUN cd libdnet-master/python/ && python setup.py install
 RUN rm -rf /libdnet-master
+RUN rm master.zip
 RUN wget https://github.com/sqlmapproject/sqlmap/zipball/master
 RUN unzip master -d /home
 RUN rm master
@@ -26,7 +27,7 @@ RUN mv /home/sqlmap* /home/sqlmap
 RUN wget https://github.com/ysrc/GourdScanV2/archive/github.zip
 RUN unzip github.zip -d /home
 RUN rm github.zip
-RUN mv GourdScanV2-github gourdscan
+RUN mv /home/GourdScanV2-github /home/gourdscan
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config  
