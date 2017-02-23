@@ -12,18 +12,21 @@ Gourdscan V2.1相对之前的版本，有着以下改进：
 9.其他细节的改变。   
 
 
+###基础环境：   
+pip install requests   
+pip install tornado     
+pip install redis    
+pip install scapy    
+sqlmapapi   git clone sqlmap源码     
+根据自己的系统安装redis apt-get install redis-server 或者自行编译 https://redis.io/download
+
 ###关于使用方法：
 ```python start.py```即可   
 用户名密码均存在conf.json中   
 默认平台用户名密码为：admin:Y3rc_admin
 默认redis密码为：Y3rc_Alw4ys_B3_W1th_Y0u
-如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。   
-必要环境：   
-pip install requests   
-pip install tornado   
-apt-get install redis-server   
-pip install redis   
-sqlmapapi   
+如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。  
+
 ######scapy模块独立于其他模块，如果不需要无需以下测试。
     mac系统需要brew install python 安装另外的Python，建议使用最新的python2.7版本
     scapy所需环境：
@@ -74,7 +77,7 @@ sqlmapapi
     代替<>。
     3.sqlitime rule: 
     时间盲注规则，所有跟延时数字有关的用TIME_VAR代替，只需要写入规则，时间判断则由系统控制，首先延时5秒，
-    如果发现延时大于4.5秒，再延时10秒，如果延时大于9.5秒而且第二次延时大约是第二次延时的两倍，则判断存在注入。
+    如果发现延时大于4.5秒，再延时10秒，如果延时大于9.5秒而且第二次延时大约是第一次延时的两倍，则判断存在注入。
     4.sqlibool rule: 
     布尔型盲注规则，前两个规则都是True判断，后两个规则都是False判断，在扫描时，如果发现第一个和第三个判断出
     现了不同的结果后，会引入第二个和第四个判断进行深度判断，防止误报，规则无需转义，无需编码。
@@ -110,7 +113,7 @@ sqlmapapi
     目前只能实现伪关闭，关闭后无法执行代理的功能，这种状态下也占用不了多少资源，如果想真正关闭，请重启平台。多线
     程模式下，ctrl+c可能无法关闭平台，需要ctrl+z，然后ps -a|grep python ，关闭start.py的pid。
 
-###警告选项！！！：
+###注意选项！！！：
     1.登录后请立即修改用户名密码，并且请严格按照格式定义config中的选项，后台只对输入做了安全过滤，没有检查
     number是否合法，如果非要把number改成string造成扫描出错等情况，就不是平台的问题了。
     2.如果同时开启扫描及抓包模块，确实抓包界面会刷新很快，由于其参数名未变，会被各个抓包模块过滤掉，所以如果使用
@@ -144,4 +147,4 @@ sqlmapapi
     1.只允许同时有200个session(session_size=6600)存在，为了方便，session过期时间为300天。不过以上
     设置均可以在config里面自行设置。
     2.默认数据页中每页100个结果，可以在config中修改。
-    3.本系统开放源代码，尚有各种不足，欢迎各位更改代码，并且欢迎将改进后的代码提交到ysrc。
+    3.本系统开放源代码，尚有各种不足，欢迎各位提交pull request。
