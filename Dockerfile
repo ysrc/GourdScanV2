@@ -37,5 +37,3 @@ EXPOSE 8000
 EXPOSE 22
 EXPOSE 10086
 EXPOSE 10806
-
-CMD ["/usr/sbin/sshd", "-D"]  
