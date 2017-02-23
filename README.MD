@@ -12,18 +12,21 @@ Gourdscan V2.1相对之前的版本，有着以下改进：
 9.其他细节的改变。   
 
 
+###基础环境：   
+pip install requests   
+pip install tornado     
+pip install redis 
+pip install scapy
+sqlmapapi   git clone sqlmap源码
+根据自己的系统安装redis apt-get install redis-server 或者自行编译 https://redis.io/download
+
 ###关于使用方法：
 ```python start.py```即可   
 用户名密码均存在conf.json中   
 默认平台用户名密码为：admin:Y3rc_admin
 默认redis密码为：Y3rc_Alw4ys_B3_W1th_Y0u
-如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。   
-必要环境：   
-pip install requests   
-pip install tornado   
-apt-get install redis-server   
-pip install redis   
-sqlmapapi   
+如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。  
+
 ######scapy模块独立于其他模块，如果不需要无需以下测试。
     mac系统需要brew install python 安装另外的Python，建议使用最新的python2.7版本
     scapy所需环境：
