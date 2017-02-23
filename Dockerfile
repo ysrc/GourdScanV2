@@ -17,8 +17,8 @@ RUN wget https://github.com/dugsong/libdnet/archive/master.zip
 RUN unzip master.zip
 RUN cd /libdnet-master && ./configure
 RUN cd libdnet-master && make && make install
-RUN python libdnet-master/python/setup.py install
-RUN rm -rf libdnet-master
+RUN cd libdnet-master/python/ && python setup.py install
+RUN rm -rf /libdnet-master
 RUN wget https://github.com/sqlmapproject/sqlmap/zipball/master
 RUN unzip master -d /home
 RUN rm master
