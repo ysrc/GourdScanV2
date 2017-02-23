@@ -124,6 +124,8 @@ sqlmapapi
 
 ###docker
     本系统已有docker file，执行命令为sudo docker build -t gourdscan:2.1 .  
+    build之后，执行命令docker run -d -p 10000:22 c42a228eea05 /usr/sbin/sshd -D
+    然后ssh root@localhost -p 10000即可登录进入容器，用户名root，密码Y3rc_admin
 
 ###QA  
     (1)Q：`测试https的时候，即使信任了站点，只能出来首页的文字`  
