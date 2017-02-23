@@ -15,9 +15,9 @@ Gourdscan V2.1相对之前的版本，有着以下改进：
 ###基础环境：   
 pip install requests   
 pip install tornado     
-pip install redis 
-pip install scapy
-sqlmapapi   git clone sqlmap源码
+pip install redis    
+pip install scapy    
+sqlmapapi   git clone sqlmap源码     
 根据自己的系统安装redis apt-get install redis-server 或者自行编译 https://redis.io/download
 
 ###关于使用方法：
