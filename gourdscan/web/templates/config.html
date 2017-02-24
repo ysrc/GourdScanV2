@@ -1,0 +1,122 @@
+{% extends "layout.html" %} 
+{% block content %}
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    <form action="/config" method="post">
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Redis Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Host:</label>
+                                <input type="text" value="{{config['redis_host']}}" class="form-control config-input" name="redis_host">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Port:</label>
+                                <input type="number" value="{{config['redis_port']}}" class="form-control config-input" name="redis_port">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Password:</label>
+                                <input type="text" value="{{config['redis_pass']}}" class="form-control config-input" name="redis_pass">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Account Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Account:</label>
+                                <input type="text" value="{{config['account']}}" class="form-control config-input" name="account">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Password:</label>
+                                <input type="text" value="{{config['password']}}" class="form-control config-input" name="password">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Cookie_secret:</label>
+                                <input type="text" value="{{config['cookie_secret']}}" class="form-control config-input" name="cookie_secret">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Session Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Session_size:</label>
+                                <input type="number" value="{{config['session_size']}}" class="form-control config-input" name="session_size">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Session_expires_time:</label>
+                                <input type="number" value="{{config['session_expires_time']}}" class="form-control config-input" name="session_expires_time">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Gourdscan Listen Config (need to restart):</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">IP:</label>
+                                <input type="text" value="{{config['ip']}}" class="form-control config-input" name="ip">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Port:</label>
+                                <input type="number" value="{{config['port']}}" class="form-control config-input" name="port">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Global Config:</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Version:</label>
+                                <input type="text" value="{{config['version']}}" class="form-control config-input" name="version">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Check_url:</label>
+                                <input type="text" value="{{config['check_url']}}" class="form-control config-input" name="check_url">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Thread_num:</label>
+                                <input type="number" value="{{config['threads_num']}}" class="form-control config-input" name="threads_num">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Scan_level:</label>
+                                <input type="number" value="{{config['scan_level']}}" class="form-control config-input" name="scan_level">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Page_num:</label>
+                                <input type="number" value="{{config['page_num']}}" class="form-control config-input" name="page_num">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Index_flush_time:</label>
+                                <input type="number" value="{{config['flush_time']}}" class="form-control config-input" name="flush_time">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Only_get_one_rule_match(faster):</label>
+                                <input type="text" value="{{config['only_one_match']}}" class="form-control config-input" name="only_one_match">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6">
+                        <div class="card-box">
+                            <h4> Black And White List (no space!!!):</h4>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Black Extention:</label>
+                                <input type="text" value="{{config['black_ext']}}" class="form-control config-input" name="black_ext">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">Black Domain:</label>
+                                <input type="text" value="{{config['black_domain']}}" class="form-control config-input" name="black_domain">
+                            </div>
+                            <div class="form-inline">
+                                <label class="form-label config-label">White Domain:</label>
+                                <input type="text" value="{{config['white_domain']}}" class="form-control config-input" name="white_domain">
+                            </div>
+                        </div>
+                     </div>
+                     <button type="submit" style="width:100%" class="btn btn-danger btn-lg btn-block"> Update All Config</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% end %}
