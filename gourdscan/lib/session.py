@@ -20,7 +20,7 @@ def new(ip):
 
 
 def check(session):
-    with open(os.getcwd() + os.path.sep + "session") as f:
+    with open(os.getcwd() + os.path.sep + "session", 'r') as f:
         lines = f.readlines()
         f.close()
         for line in lines:
