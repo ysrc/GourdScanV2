@@ -45,12 +45,12 @@ def update_rule(rule):
 
 def rule_read(name, get_file_handle=None):
     if get_file_handle:
-        return os.path.join(RULES_PATH, name, '.rule')
-    with open(os.path.join(RULES_PATH, name, '.rule')) as con:
+        return os.path.join(RULES_PATH, name + '.rule')
+    with open(os.path.join(RULES_PATH, name + '.rule')) as con:
         content = con.read()
         return content
 
 
 def rule_write(name, rule):
-    with open(os.path.join(RULES_PATH, name, '.rule'), "w") as con:
+    with open(os.path.join(RULES_PATH, name + '.rule'), "w") as con:
         con.write(rule)
