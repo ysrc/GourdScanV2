@@ -249,9 +249,12 @@ class ProxyHandler(BaseHandler):
                 start_conf = config.load()
                 start_conf['tornado_stat'] = start_stat
                 config.update(start_conf)
-                if start_stat.lower() == "true":
+                if start_stat.lower() == "true" and config.load()['tornado_run_stat'] == 'false':
                     thread = threading.Thread(target=proxy_io.main)
                     thread.start()
+                    start_conf = config.load()
+                    start_conf['tornado_run_stat'] = 'true'
+                    config.update(start_conf)
                 return self.write(out.jump("/proxy?type=" + proxy_type))
             except:
                 pass

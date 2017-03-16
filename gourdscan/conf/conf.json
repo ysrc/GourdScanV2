@@ -2,7 +2,7 @@
 "scapy_network_card": "all",
 "scan_stat": "false",
 "check_url": "http://sec.ly.com/gourdscanv2/version.txt",
-"threads_num": "20",
+"threads_num": "10",
 "ip": "0.0.0.0",
 "page_num": "100",
 "scapy_stat": "false",
@@ -28,5 +28,6 @@
 "redis_host": "127.0.0.1",
 "scapy_out": "True",
 "redis_port": "6379",
-"cookie_secret": "O3h80XXsQiyTiH1eNgKBzQnJrgVuieykhk/yqh0/BTw="
+"cookie_secret": "O3h80XXsQiyTiH1eNgKBzQnJrgVuieykhk/yqh0/BTw=",
+"tornado_run_stat":"false"
 }

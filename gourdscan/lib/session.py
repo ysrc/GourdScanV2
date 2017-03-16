@@ -4,9 +4,10 @@
 import os
 import time
 
-from hashlib import md5
+import md5
 
 from gourdscan.lib import config
+from gourdscan.lib.settings import SESSION_CONF_FILE
 
 '''
 Create session string or update a session into session file.
@@ -20,7 +21,7 @@ def new(ip):
 
 
 def check(session):
-    with open(os.getcwd() + os.path.sep + "session", 'r+') as f:
+    with open(SESSION_CONF_FILE, 'r+') as f:
         lines = f.readlines()
         f.close()
         for line in lines:
@@ -31,17 +32,17 @@ def check(session):
 
 def update(session):
     size_control()
-    with open(os.getcwd() + os.path.sep + "session", 'a') as f:
+    with open(SESSION_CONF_FILE, 'a') as f:
         f.write(session + '\n')
         f.close()
         return True
 
 
 def destroy(session):
-    with open(os.getcwd() + os.path.sep + "session", 'r') as f:
+    with open(SESSION_CONF_FILE, 'r') as f:
         lines = f.readlines()
         f.close()
-        ff = open(os.getcwd() + os.path.sep + "session", 'w')
+        ff = open(SESSION_CONF_FILE, 'w')
         for line in lines:
             if session != line.strip():
                 ff.write(line)
@@ -50,11 +51,11 @@ def destroy(session):
 
 
 def size_control():
-    if os.path.getsize(os.getcwd() + os.path.sep + "session") > config.load()["session_size"]:
-        with open(os.getcwd() + os.path.sep + "session", 'r') as f:
+    if os.path.getsize(SESSION_CONF_FILE) > config.load()["session_size"]:
+        with open(SESSION_CONF_FILE, 'r') as f:
             lines = f.readlines()
             f.close()
-            ff = open(os.getcwd() + os.path.sep + "session", 'w')
+            ff = open(SESSION_CONF_FILE, 'w')
             size = 0
             for line in lines:
                 size += len(line)

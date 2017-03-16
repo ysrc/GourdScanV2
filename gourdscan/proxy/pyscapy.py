@@ -31,8 +31,8 @@ def extract(data, out):
                     headers[h.split(': ')[0]] = h.split(': ')[1]
             host = headers['Host'].replace(' ', '')
             uri = "http://%s%s" % (host, url)
-            if out:
-                print "%s   %s" % (method, uri)
+            if out == 'true':
+                print_request(method, host, url)
             content_deal(headers, host, method, postdata='', uri=uri, packet=data)
 
         elif method == 'POST':
@@ -43,8 +43,8 @@ def extract(data, out):
                     headers[h.split(': ')[0]] = h.split(': ')[1]
             host = headers['Host'].replace(' ', '')
             uri = "http://%s%s" % (host, url)
-            if out:
-                print "%s   %s" % (method, uri)
+            if out == 'true':
+                print_request(method, host, url)
             content_deal(headers, host, method, postdata=body, uri=uri, packet=data)
 
     except Exception, e:
@@ -53,12 +53,12 @@ def extract(data, out):
         print "Http Error: " + str(e)
 
 
-def print_request(http):
-    print "%s   %s%s    %s" % (http.method, http.host, http.url, http.hash)
+def print_request(method, host, url):
+    print "%s   %s%s" % (method, host, url)
 
 
 def capture(x):
-    out = config.load()['scapy_out']
+    out = config.load()['scapy_out'].lower()
     if config.load()['scapy_stat'].lower() == 'false':
         raise Exception('scapy', 'out')
     if 'HTTP/' in x.lastlayer().original and x.lastlayer().original[0:4] != 'HTTP':
@@ -76,5 +76,5 @@ def main():
     except Exception as e:
         error("scapy out!")
         conf = config.load()
-        conf['scapy_stat'].lower = "false"
+        conf['scapy_stat'] = "false"
         config.update(conf)

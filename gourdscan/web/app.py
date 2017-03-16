@@ -34,6 +34,7 @@ def main():
     conf['tornado_stat'] = 'false'
     conf['scan_stat'] = 'false'
     conf['mix_stat'] = 'false'
+    conf['tornado_run_stat'] = 'false'
     config.update(conf)
     app = make_app(settings)
     app.listen(port=options.port, address=options.address)
