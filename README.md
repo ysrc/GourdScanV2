@@ -32,6 +32,7 @@ $ pip install -r requirements.txt
 
 **其他模块**
 
+如果有报错便可以安装，一般不需要安装   
 `
 $ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip 
 `
@@ -52,7 +53,7 @@ $ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.g
 ## 使用方法：
 
 ```
-$ python cli.py
+$ cd gourdscan && python cli.py
 ```
 或
 
@@ -61,9 +62,9 @@ $ gourdscan
 ```
 **conf.json**
 
-> 默认平台用户名密码为：admin:Y3rc_admin
-> 默认redis密码为：Y3rc_Alw4ys_B3_W1th_Y0u
-> 如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。
+> 默认平台用户名密码为：admin:Y3rc_admin   
+> 默认redis密码为：Y3rc_Alw4ys_B3_W1th_Y0u   
+> 如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。   
 
 
 ## 关于扫描规则：
@@ -159,7 +160,7 @@ $ sudo docker build -t gourdscan:2.1 .
 **创建容器**
 
 `
-$ docker run -d -p 10000:22 c42a228eea05 /usr/sbin/sshd -D
+$ docker run -d -p 10000:22 -p 8000:8000 -p 10086:10086 -p 10806:10806 gourdscan "/usr/sbin/sshd -D"
 `
 **登陆服务器**
 
