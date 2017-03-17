@@ -2,4 +2,3 @@ requests
 tornado
 redis
 scapy
-sqlmap

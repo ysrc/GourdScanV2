@@ -25,8 +25,7 @@ setup(
         'tornado',
         'redis',
         'scapy',
-        'pylibpcap',
-        'sqlmap'
+        'pylibpcap'
     ],
     extras_require={}
 )
