@@ -12,6 +12,7 @@ FROM ubuntu
 
 RUN apt-get update
 RUN apt-get install -y redis-server python python-pip zip wget vim openssh-server
+RUN pip install --upgrade pip
 RUN pip install tornado requests redis scapy
 RUN wget https://github.com/sqlmapproject/sqlmap/zipball/master
 RUN unzip master -d /home

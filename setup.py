@@ -25,7 +25,6 @@ setup(
         'tornado',
         'redis',
         'scapy',
-        'pylibpcap'
     ],
     extras_require={}
 )
