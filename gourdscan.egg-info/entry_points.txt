@@ -1,0 +1,3 @@
+[console_scripts]
+gourdscan = gourdscan.cli:main
+

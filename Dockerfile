@@ -11,23 +11,24 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install -y redis-server python python-pip zip wget vim openssh-server
+RUN apt-get install -y redis-server python python-pip zip wget vim openssh-server python-libpcap libpcap-dev
 RUN pip install --upgrade pip
 RUN pip install tornado requests redis scapy
 RUN wget https://github.com/sqlmapproject/sqlmap/zipball/master
-RUN unzip master -d /home
+RUN unzip master -d /root
 RUN rm master
-RUN mv /home/sqlmap* /home/sqlmap
+RUN mv /root/sqlmap* /root/sqlmap
 RUN wget https://github.com/ysrc/GourdScanV2/archive/github.zip
-RUN unzip github.zip -d /home
+RUN unzip github.zip -d /root
 RUN rm github.zip
-RUN mv /home/GourdScanV2-github /home/gourdscan
-RUN cd /home/gourdscan && python setup.py install
+RUN mv /root/GourdScanV2-github /root/gourdscan
+RUN cd /root/gourdscan && python setup.py install
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config  
 RUN echo "root:Y3rc_admin" | chpasswd
 RUN usermod -s /bin/bash root
+RUN cp -r 
 
 EXPOSE 8000
 EXPOSE 22
