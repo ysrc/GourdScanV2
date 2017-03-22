@@ -27,7 +27,7 @@ RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config  
 RUN echo "root:Y3rc_admin" | chpasswd
-RUN usermod -s /bin/bash admin
+RUN usermod -s /bin/bash root
 
 EXPOSE 8000
 EXPOSE 22
