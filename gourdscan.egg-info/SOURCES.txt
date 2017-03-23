@@ -29,6 +29,7 @@ gourdscan/web/handlers/main.py
 gourdscan/conf/conf.json
 gourdscan/conf/key.crt
 gourdscan/conf/key.pem
+gourdscan/conf/session
 gourdscan/conf/rules/ldap.rule
 gourdscan/conf/rules/lfi.rule
 gourdscan/conf/rules/rule.conf

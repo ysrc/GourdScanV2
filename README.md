@@ -160,9 +160,10 @@ $ sudo docker build -t gourdscan:2.1 .
 **创建容器**
 
 `
-$ docker run -d -p 10000:22 -p 8000:8000 -p 10086:10086 -p 10806:10806 gourdscan "/usr/sbin/sshd -D"
+$ docker run -d -p 10000:22 -p 8000:8000 -p 10086:10086 -p 10806:10806 gourdscan:2.1 /usr/sbin/sshd -D
 `
-**登陆服务器**
+
+**登录服务器**
 
 `
 $ ssh root@localhost -p 10000
@@ -170,6 +171,12 @@ $ ssh root@localhost -p 10000
 
 _用户名: `root`，密码: `Y3rc_admin`_
 
+**操作**
+
+`
+redis-server ~/gourdscan/redis.conf
+gourdscan
+`
 
 ## QA
 
