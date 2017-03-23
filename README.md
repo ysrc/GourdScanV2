@@ -30,9 +30,11 @@
 $ pip install -r requirements.txt
 `
 
-**其他模块**
+**其他事项**
 
-如果有报错便可以安装，一般不需要安装   
+通过setup.py启动gourdscan请cp gourdscan目录下的所有内容到python安装目录下的python2.7/dist-packages/gourdscan-2.1-py2.7.egg/gourdscan/目录   
+
+以下如果有报错便可以安装，一般不需要安装   
 `
 $ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip 
 `
