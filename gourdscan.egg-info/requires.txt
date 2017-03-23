@@ -1,4 +1,0 @@
-requests
-tornado
-redis
-scapy
