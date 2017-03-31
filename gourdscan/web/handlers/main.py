@@ -142,7 +142,7 @@ class ReqHandler(BaseHandler):
         try:
             request_hash = self.get_argument("hash")
             request = json.loads(base64.b64decode(conn.hget("request", request_hash)))
-            if conn.hget("results", request_hash):
+            if not conn.hget("results", request_hash):
                 results = {}
                 stat = "success"
             else:
