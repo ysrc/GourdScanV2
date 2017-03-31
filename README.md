@@ -1,4 +1,4 @@
-# Gourdscan
+# Gourdscan(测试版会经常更新，暂时不发布，请用户勤更新)
 
 ## Changelog 
 

@@ -8,6 +8,7 @@ import warnings
 import requests
 import threading
 
+from gourdscan.lib.settings import CONF_PATH
 from gourdscan.lib.redisopt import conn, content_deal
 from gourdscan.lib import config
 
@@ -27,7 +28,7 @@ White_domain are loaded from white_domain.conf split by "," in one line!
 
 def https_things(sock):
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    context.load_cert_chain(certfile="key.crt", keyfile="key.pem")
+    context.load_cert_chain(certfile=CONF_PATH + "key.crt", keyfile=CONF_PATH + "key.pem")
     connstream = context.wrap_socket(sock, server_side=True)
     client_conn(connstream, True)
 
@@ -151,7 +152,7 @@ def main():
         bindsocket.listen(300)
     except Exception as e:
         conf = config.load()
-        conf['mix_stat'].lower() = "false"
+        conf['mix_stat'] = "false"
         config.update(conf)
         print e
         exit()
