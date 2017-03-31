@@ -151,7 +151,7 @@ def main():
         bindsocket.listen(300)
     except Exception as e:
         conf = config.load()
-        conf['mix_stat'].lower = "false"
+        conf['mix_stat'].lower() = "false"
         config.update(conf)
         print e
         exit()
