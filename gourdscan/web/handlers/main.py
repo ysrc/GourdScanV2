@@ -43,7 +43,7 @@ class LoginHandler(tornado.web.RequestHandler):
         account = secure.clear(self.get_argument("account"))
         password = secure.clear(self.get_argument("password"))
         if account == config.load()['account'] and password == config.load()['password']:
-            cookie = session.new("self.request.remote_ip")
+            cookie = session.new(self.request.remote_ip)
             self.set_cookie("ysrc_token", cookie, expires_days=int(config.load()["session_expires_time"]))
             session.update(cookie)
             self.set_header("Location", "/")
