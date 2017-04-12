@@ -176,7 +176,7 @@ _用户名: `root`，密码: `Y3rc_admin`_
 **操作**
 
 `
-redis-server ~/gourdscan/redis.conf
+redis-server ~/gourdscan/redis.conf   
 gourdscan
 `
 
