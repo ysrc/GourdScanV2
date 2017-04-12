@@ -11,7 +11,7 @@ def authenticated(method):
         if not self.login:
             self.set_header("Location", "/login")
             self.set_status(302)
-        return method(self, *args, **kwargs)
+        return
     return wrapper
 
 
