@@ -3,8 +3,9 @@
 "scan_stat": "false",
 "check_url": "http://sec.ly.com/gourdscanv2/version.txt",
 "threads_num": "10",
+"tornado_run_stat": "false",
 "ip": "0.0.0.0",
-"page_num": "100",
+"flush_time": "120",
 "scapy_stat": "false",
 "only_one_match": "True",
 "mix_addr": "127.0.0.1",
@@ -18,7 +19,7 @@
 "session_expires_time": "300",
 "redis_pass": "Y3rc_Alw4ys_B3_W1th_Y0u",
 "session_size": "6600",
-"flush_time": "120",
+"page_num": "100",
 "black_ext": "css,flv,mp4,mp4,swf,js,jpg,jpeg,png,css,mp4,gif,txt,ico,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx",
 "mix_port": "10086",
 "tornado_address": "127.0.0.1",
@@ -28,6 +29,5 @@
 "redis_host": "127.0.0.1",
 "scapy_out": "True",
 "redis_port": "6379",
-"cookie_secret": "O3h80XXsQiyTiH1eNgKBzQnJrgVuieykhk/yqh0/BTw=",
-"tornado_run_stat":"false"
+"cookie_secret": "O3h80XXsQiyTiH1eNgKBzQnJrgVuieykhk/yqh0/BTw="
 }

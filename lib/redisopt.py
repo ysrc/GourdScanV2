@@ -7,8 +7,8 @@ import urlparse
 
 from hashlib import md5
 
-from gourdscan.lib.settings import CHECK_CONF_FILE
-from gourdscan.lib import config
+from lib.settings import CHECK_CONF_FILE
+from lib import config
 
 
 '''

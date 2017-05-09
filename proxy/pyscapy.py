@@ -10,9 +10,9 @@ import logging
 
 from scapy.all import *
 
-from gourdscan.lib.redisopt import conn, content_deal
-from gourdscan.lib.out import error
-from gourdscan.lib import config
+from lib.redisopt import conn, content_deal
+from lib.out import error
+from lib import config
 
 
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)

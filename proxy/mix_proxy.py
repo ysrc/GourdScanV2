@@ -8,9 +8,9 @@ import warnings
 import requests
 import threading
 
-from gourdscan.lib.settings import CONF_PATH
-from gourdscan.lib.redisopt import conn, content_deal
-from gourdscan.lib import config
+from lib.settings import CONF_PATH
+from lib.redisopt import conn, content_deal
+from lib import config
 
 warnings.filterwarnings("ignore")
 

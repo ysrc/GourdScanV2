@@ -1,17 +1,28 @@
-#!/usr/bin/env python
+#!/usr/bin/env python 
 # coding: utf-8
+
+VERSION = "2.1"
+
+logo = """
+   _____                              _
+  / ____|                            | |
+ | |  __    ___    _   _   _ __    __| |
+ | | |_ |  / _ \  | | | | | '__|  / _` |
+ | |__| | | (_) | | |_| | | |    | (_| |
+  \_____|  \___/   \__,_| |_|     \__,_|  Ver %s
+
+                By YSRC Team
+""" % VERSION
 
 import os
 import site  # Add the boilerplate's directories to Python's site-packages path.
-
 import tornado.web
 import tornado.ioloop
-
 from tornado.options import define, options
-
-from gourdscan.lib import out
-from gourdscan.lib import config
-from gourdscan.web.urls import url_patterns
+from lib import out
+from lib import config
+from lib.update import check_update
+from web.urls import url_patterns
 
 
 def make_app(settings):
@@ -25,8 +36,8 @@ def main():
     path = lambda root, *a: os.path.join(root, *a)
     ROOT = os.path.dirname(os.path.abspath(__file__))
     settings = {}
-    settings['static_path'] = path(ROOT, "static")
-    settings['template_loader'] = tornado.template.Loader(path(ROOT, "templates"))
+    settings['static_path'] = path(ROOT, "web", "static")
+    settings['template_loader'] = tornado.template.Loader(path(ROOT, "web", "templates"))
     settings['login_url'] = "/login"
     site.addsitedir(path(ROOT, 'handlers'))
     conf = config.load()
@@ -42,4 +53,8 @@ def main():
     tornado.ioloop.IOLoop.current().start()
 
 if __name__ == '__main__':
+    # check update
+    check_update()
+
+    print logo
     main()

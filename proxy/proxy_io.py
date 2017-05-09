@@ -38,8 +38,8 @@ import tornado.httputil
 
 from urlparse import urlparse
 
-from gourdscan.lib import config
-from gourdscan.lib.redisopt import conn, content_deal
+from lib import config
+from lib.redisopt import conn, content_deal
 
 
 logger = logging.getLogger('tornado_proxy')

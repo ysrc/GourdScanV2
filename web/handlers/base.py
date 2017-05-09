@@ -3,7 +3,7 @@
 
 import tornado.web
 
-from gourdscan.lib import session
+from lib import session
 
 
 def authenticated(method):

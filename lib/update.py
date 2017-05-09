@@ -3,8 +3,8 @@
 
 import requests
 
-from gourdscan.lib import config
-from gourdscan.lib import out
+from lib import config
+from lib import out
 
 '''
 Checking update when it start

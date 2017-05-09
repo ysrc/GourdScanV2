@@ -8,15 +8,14 @@ import threading
 
 import tornado.web
 
-from gourdscan.lib.redisopt import conn
-from gourdscan.lib import out
-from gourdscan.lib import scan
-from gourdscan.lib import secure
-from gourdscan.lib import config
-from gourdscan.lib import session
-from gourdscan.proxy import pyscapy, mix_proxy, proxy_io
-from gourdscan.web.handlers.base import BaseHandler, authenticated
-
+from lib.redisopt import conn
+from lib import out
+from lib import scan
+from lib import secure
+from lib import config
+from lib import session
+from proxy import pyscapy, mix_proxy, proxy_io
+from web.handlers.base import BaseHandler, authenticated
 
 class PageNotFoundHandler(tornado.web.RequestHandler):
 

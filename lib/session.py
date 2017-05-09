@@ -6,8 +6,8 @@ import time
 
 import md5
 
-from gourdscan.lib import config
-from gourdscan.lib.settings import SESSION_CONF_FILE
+from lib import config
+from lib.settings import SESSION_CONF_FILE
 
 '''
 Create session string or update a session into session file.

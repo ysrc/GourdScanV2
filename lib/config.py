@@ -10,9 +10,9 @@ import warnings
 import json
 import os
 
-from gourdscan.lib.settings import CHECK_CONF_FILE
-from gourdscan.lib.settings import RULES_CONF_FILE
-from gourdscan.lib.settings import RULES_PATH
+from lib.settings import CHECK_CONF_FILE
+from lib.settings import RULES_CONF_FILE
+from lib.settings import RULES_PATH
 
 
 warnings.filterwarnings("ignore")

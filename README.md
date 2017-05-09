@@ -1,4 +1,6 @@
-# Gourdscan(测试版会经常更新，暂时不发布，请用户勤更新)
+# Gourdscan v2.1
+
+###Passive Vulnerability Scan
 
 ## Changelog 
 
@@ -32,8 +34,6 @@ $ pip install -r requirements.txt
 
 **其他事项**
 
-通过setup.py启动gourdscan请cp gourdscan目录下的所有内容到python安装目录下的python2.7/dist-packages/gourdscan-2.1-py2.7.egg/gourdscan/目录   
-
 以下如果有报错便可以安装，一般不需要安装   
 `
 $ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip 
@@ -45,23 +45,19 @@ $ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.g
 
 ### Windows
 
- _TODO_
+ 无需其他设置
 
 ### OSX
 
- _TODO_
+ 无需其他设置
 
 
 ## 使用方法：
 
 ```
-$ cd gourdscan && python cli.py
+python gourdscan.py
 ```
-或
 
-```
-$ gourdscan
-```
 **conf.json**
 
 > 默认平台用户名密码为：admin:Y3rc_admin   
@@ -176,7 +172,7 @@ _用户名: `root`，密码: `Y3rc_admin`_
 **操作**
 
 `
-redis-server ~/gourdscan/redis.conf
+redis-server ~/gourdscan/conf/redis.conf
 `
 
 `

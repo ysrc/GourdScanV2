@@ -11,9 +11,9 @@ import threading
 from xml.dom import minidom
 from base64 import decodestring as ds
 
-from gourdscan.lib import out
-from gourdscan.lib import config
-from gourdscan.lib.redisopt import conn
+from lib import out
+from lib import config
+from lib.redisopt import conn
 
 '''
 All those scan funcs and threads controll
