@@ -37,5 +37,17 @@ def check_requirements():
             import scapy
             print "Requirements is OK!"
             return
-        except:
-            exit('Something going wrong with pip, please run "pip install requests tornado redis scapy" manualy!')
+        except Exception, e:
+            exit('Something going wrong with pip: %s, please run "pip install requests tornado redis scapy" manualy!' % e)
+
+def check_redis():
+    try:
+        from lib.redisopt import conn
+    except:
+        yes = raw_input('Something wrong with the redis, Do you want to run the command "redis-server ./conf/redis.conf"? (Y/n)')
+        if yes == '' or yes.lower() == 'y' or yes.lower() == 'yes':
+            os.system("redis-server ./conf/redis.conf")
+        try:
+            from lib.redisopt import conn
+        except Exception, e:
+            exit("Something wrong with the redis: %s, please check it manualy!" % e)

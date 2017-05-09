@@ -102,7 +102,7 @@ def new_scan(reqhash, request, rules):
     vulnerable = 0
     for rule in rules:
         if config.load()['scan_stat'].lower() == "true":
-            message = eval(rule + "_scan")(request, config.load()['scan_level'])
+            message = eval(rule + "_scan")(request, int(config.load()['scan_level']))
             request_stat = message['request_stat']
             if request_stat > vulnerable:
                 vulnerable = request_stat
@@ -223,9 +223,10 @@ def sqlibool_scan(request, config_level):
                 compare22 = compare.getElementsByTagName("compare22")[0].childNodes[0].nodeValue
                 for param_name in urlparse.urlparse(request['url']).query.split("&"):
                     response1 = request_payload(request, compare1, param_name)
-                    response11 = request_payload(request, compare11, param_name)
                     response2 = request_payload(request, compare2, param_name)
                     response22 = request_payload(request, compare22, param_name)
+                    time.sleep(1)#prevent time stamp in response
+                    response11 = request_payload(request, compare11, param_name)
                     if response1 == response11 and response2 == response22 and response1 != response2:
                         message['request_stat'] = 2
                         message['message'] += "payload1: %s|#|payload2: %s|#|param: %s|,|" % (compare1.encode('utf-8'), compare2.encode('utf-8'), param_name.split("=")[0])
