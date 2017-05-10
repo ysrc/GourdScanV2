@@ -1,7 +1,7 @@
 {
 "scapy_network_card": "all",
 "scan_stat": "True",
-"check_url": "http://sec.ly.com/gourdscanv2/version.txt",
+"check_url": "https://sec.ly.com/gourdscanv2/version.txt",
 "threads_num": "10",
 "tornado_run_stat": "false",
 "ip": "0.0.0.0",
@@ -12,7 +12,7 @@
 "tornado_port": "10806",
 "mix_stat": "false",
 "scan_level": "3",
-"black_domain": "ditu.google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com",
+"black_domain": "google.cn,doubleclick,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication,gstatic.com,bing.com,google.com,digicert.com,huihui.cn,tanx.com",
 "port": "8000",
 "white_domain": "",
 "version": "2.1",
