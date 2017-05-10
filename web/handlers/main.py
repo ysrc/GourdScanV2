@@ -163,6 +163,12 @@ class ReqHandler(BaseHandler):
                                 if message != "":
                                     messages.append(message)
                                 results[rule]['message'] = messages
+                for item in content:
+                    #split the url in 90 chars
+                    url = request['url']
+                    request['url'] = ""
+                    for i in range(len(url)/90+1):
+                        request['url'] += url[i*90:i*90+90] + "\n"
             return self.render("req.html", request=request, results=results, stat=stat)
         except Exception, e:
             out.error(str(e))
@@ -198,6 +204,11 @@ class ListHandler(BaseHandler):
         for reqhash in content:
             request_content = json.loads(base64.b64decode(conn.hget("request", reqhash)))
             req_content[reqhash] = request_content['method'] + "|" + request_content['url']
+        for item in content:
+            #split the url in 90 chars
+            req_content[item] += "|"
+            for i in range(len(req_content[item].split("|")[1])/90+1):
+                req_content[item] += req_content[item].split("|")[1][i*90:i*90+90] + "\n"
         return self.render("list.html", page_now=page_now, page_num=page_num, pages=pages, content=content, list_type=list_type, length=length, req_content=req_content, end_num=end_num)
 
 
