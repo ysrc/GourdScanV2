@@ -2,7 +2,7 @@
 <rules>
     <couple id="1">
         <requests>
-            ^(#$!@#$)(()))******
+            ^(%23$!@%23$)(()))******
         </requests>
         <responses>
             supplied argument is not a valid ldap

@@ -29,11 +29,13 @@ conn = redis.StrictRedis(**redisconf)
 def get_hash(host, uri, postdata):
     request = 'http://' + host + urlparse.urlparse(uri).path + "?"
     dic = urlparse.urlparse(uri).query.split('&')
-    for d in dic:
-        request += d.split('=')[0]+'=&'
+    for param in dic:
+        if param != "" and "=" in param:
+            request += param.split('=')[0]+'=&'
     request += "|"
-    for d in postdata.split('&'):
-        request += d.split('=')[0]+'=&'
+    for param in postdata.split('&'):
+        if param != "" and "=" in param:
+            request += param.split('=')[0]+'=&'
     url_hash = md5(request).hexdigest()
     return url_hash
 

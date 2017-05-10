@@ -39,6 +39,7 @@ def main():
     settings['static_path'] = path(ROOT, "web", "static")
     settings['template_loader'] = tornado.template.Loader(path(ROOT, "web", "templates"))
     settings['login_url'] = "/login"
+    settings['debug'] = True 
     site.addsitedir(path(ROOT, 'handlers'))
     conf = config.load()
     conf['scapy_stat'] = 'false'

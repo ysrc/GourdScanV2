@@ -62,7 +62,18 @@ class IndexHandler(BaseHandler):
         running = conn.lrange("running", 0, 15)
         finished = conn.lrange("finished", 0, 15)
         vulnerable = conn.lrange("vulnerable", 0, 15)
-        self.render("index.html", waiting_num=conn.llen("waiting"), running_num=conn.llen("running"), finished_num=conn.llen("finished"), vulnerable_num=conn.llen("vulnerable"), waiting=waiting, running=running, finished=finished, vulnerable=vulnerable, time=config.load()["flush_time"])
+        stats_all = {}
+        for i in [waiting, running, finished, vulnerable]:
+            for reqhash in i:
+                try:
+                    decode_results = json.loads(base64.b64decode(conn.hget("results", reqhash)))
+                except:
+                    decode_results = {'stat':0}
+                stats = ['success', 'info', 'warning', "danger"]
+                stat = decode_results['stat']
+                stat = stats[stat]
+                stats_all[reqhash] = stat
+        self.render("index.html", waiting_num=conn.llen("waiting"), running_num=conn.llen("running"), finished_num=conn.llen("finished"), vulnerable_num=conn.llen("vulnerable"), waiting=waiting, running=running, finished=finished, vulnerable=vulnerable, time=config.load()["flush_time"], stats_all=stats_all)
         return
 
 
@@ -130,6 +141,7 @@ class ScanStatHandler(BaseHandler):
         config.update(config_all)
         if stat.lower() == "true":
             thread = threading.Thread(target=scan.scan_start, args=())
+            thread.setDaemon(True)
             thread.start()
         return self.write(out.jump("/scan_config"))
 
@@ -163,12 +175,11 @@ class ReqHandler(BaseHandler):
                                 if message != "":
                                     messages.append(message)
                                 results[rule]['message'] = messages
-                for item in content:
-                    #split the url in 90 chars
-                    url = request['url']
-                    request['url'] = ""
-                    for i in range(len(url)/90+1):
-                        request['url'] += url[i*90:i*90+90] + "\n"
+                #split the url in 90 chars
+            url = request['url']
+            request['url'] = ""
+            for i in range(len(url)/90+1):
+                request['url'] += url[i*90:i*90+90] + "\n"
             return self.render("req.html", request=request, results=results, stat=stat)
         except Exception, e:
             out.error(str(e))
@@ -202,13 +213,20 @@ class ListHandler(BaseHandler):
         content = conn.lrange(list_type, start, last)
         req_content = {}
         for reqhash in content:
-            request_content = json.loads(base64.b64decode(conn.hget("request", reqhash)))
-            req_content[reqhash] = request_content['method'] + "|" + request_content['url']
-        for item in content:
+            decode_content = json.loads(base64.b64decode(conn.hget("request", reqhash)))
+            try:
+                decode_results = json.loads(base64.b64decode(conn.hget("results", reqhash)))
+            except:
+                decode_results = {'stat': 0}
+            req_content[reqhash] = decode_content['method'] + "|" + decode_content['url']
             #split the url in 90 chars
-            req_content[item] += "|"
-            for i in range(len(req_content[item].split("|")[1])/90+1):
-                req_content[item] += req_content[item].split("|")[1][i*90:i*90+90] + "\n"
+            req_content[reqhash] += "|"
+            for i in range(len(req_content[reqhash].split("|")[1])/90+1):
+                req_content[reqhash] += req_content[reqhash].split("|")[1][i*90:i*90+90] + "\n"
+            stats = ['success', 'info', 'warning', "danger"]
+            stat = decode_results['stat']
+            stat = stats[stat]
+            req_content[reqhash] += "|" + stat
         return self.render("list.html", page_now=page_now, page_num=page_num, pages=pages, content=content, list_type=list_type, length=length, req_content=req_content, end_num=end_num)
 
 
@@ -229,6 +247,7 @@ class ProxyHandler(BaseHandler):
                 config.update(start_conf)
                 if start_stat.lower() == "true":
                     thread = threading.Thread(target=mix_proxy.main)
+                    thread.setDaemon(True)
                     thread.start()
                 else:
                     secure.kill(config.load()['mix_addr'], int(config.load()['mix_port']), "GE")
@@ -246,6 +265,7 @@ class ProxyHandler(BaseHandler):
                 config.update(start_conf)
                 if start_stat.lower() == "true":
                     thread = threading.Thread(target=pyscapy.main)
+                    thread.setDaemon(True)
                     thread.start()
                 return self.write(out.jump("/proxy?type=" + proxy_type))
             except:
@@ -261,6 +281,7 @@ class ProxyHandler(BaseHandler):
                 config.update(start_conf)
                 if start_stat.lower() == "true" and config.load()['tornado_run_stat'] == 'false':
                     thread = threading.Thread(target=proxy_io.main)
+                    thread.setDaemon(True)
                     thread.start()
                     start_conf = config.load()
                     start_conf['tornado_run_stat'] = 'true'

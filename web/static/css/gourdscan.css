@@ -18,3 +18,19 @@ html{
 .red{
     color: red;
 }
+
+.a-danger{
+    color: #d9534f;
+}
+
+.a-success{
+    color: #5cb85c;
+}
+
+.a-info{
+    color: #5bc0de;
+}
+
+.a-warning{
+    color: #f0ad4e;
+}

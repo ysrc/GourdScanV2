@@ -9,7 +9,7 @@
                 <div class="card-box">
                     <h3> Waiting: {{waiting_num}} reqs</h3>
                     {% for item in waiting %}
-                        <h5><a href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
+                        <h5><a class="a-{{stats_all[item]}}" href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
                     {% end %}
                     <h4><a style="color:red;" href="/list?type=waiting">view more</a></h4>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="card-box">
                     <h3> Running: {{running_num}} reqs</h3>
                     {% for item in running %}
-                        <h5><a href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
+                        <h5><a class="a-{{stats_all[item]}}" href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
                     {% end %}
                     <h4><a style="color:red;" href="/list?type=running">view more</a></h4>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="card-box">
                     <h3> Finished: {{finished_num}} reqs</h3>
                     {% for item in finished %}
-                        <h5><a href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
+                        <h5><a class="a-{{stats_all[item]}}" href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
                     {% end %}
                     <h4><a style="color:red;" href="/list?type=finished">view more</a></h4>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="card-box" >
                     <h3> Vulnerable: {{vulnerable_num}} reqs</h3>
                     {% for item in vulnerable %}
-                        <h5><a href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
+                        <h5><a class="a-{{stats_all[item]}}" href="/req?hash={{item}}">{{item[:27]}}</a>  </h5>
                     {% end %}
                     <h4><a style="color:red;" href="/list?type=vulnerable">view more</a></h4>
                 </div>
