@@ -203,6 +203,10 @@ gourdscan
 > 其一样信任，chrome下具体方式是打开浏览器开发者选项(f12或command+i)，点击"network"，重新刷新页面，
 > 双击红色的url，并信任该域，再次刷新重复上述步骤，直到可以完全加载出来。
 
+> 此外这边有个 trick，在 chrome 的快捷方式目标中加入 --ignore-certificate-errors 参数，可以让 chrome 忽略证书错误继续加载网页。
+
+ ![](https://sec.ly.com/pic/20170512192413.jpg)
+
 * 问：引入scapy module的时候显示缺少libdnet 
 > 在所需环境中有libdnet及其依赖的安装方式
 
