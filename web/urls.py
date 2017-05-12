@@ -15,6 +15,7 @@ url_patterns =  [
     (r"^/req", handlers.main.ReqHandler),
     (r"^/list", handlers.main.ListHandler),
     (r"^/del", handlers.main.DelHandler),
+    (r"^/reset_scan", handlers.main.ResetScanHandler),
     (r"^/.*", handlers.main.PageNotFoundHandler),
 ]
 

@@ -325,3 +325,14 @@ class DelHandler(BaseHandler):
             conn.flushdb()
             return self.write(out.jump("/"))
         return self.write(out.jump("/list?type=" + del_type))
+
+class ResetScanHandler(BaseHandler):
+
+    @authenticated
+    def get(self):
+        if config.load()['scan_stat'].lower() == 'false':
+            return self.write(out.jump("/"))
+        stat = conn.rpoplpush("running", "waiting")
+        while stat:
+            stat = conn.rpoplpush("running", "waiting")
+        return self.write(out.alert("reset success!", "/scan_stat?stat=true"))

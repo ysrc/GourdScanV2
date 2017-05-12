@@ -20,7 +20,7 @@
 "redis_pass": "Y3rc_Alw4ys_B3_W1th_Y0u",
 "session_size": "6600",
 "page_num": "100",
-"black_ext": "css,flv,mp3,mp4,swf,js,jpg,jpeg,png,css,gif,txt,ico,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx",
+"black_ext": "css,flv,mp3,mp4,swf,js,jpg,jpeg,png,css,gif,txt,ico,pdf,css3,txt,rar,zip,avi,mp4,swf,wmi,exe,mpeg,ppt,pptx,doc,docx,xls,xlsx,woff2,woff,map",
 "mix_port": "10086",
 "tornado_address": "127.0.0.1",
 "password": "Y3rc_admin",

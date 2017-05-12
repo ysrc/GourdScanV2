@@ -27,7 +27,7 @@ conn = redis.StrictRedis(**redisconf)
 
 
 def get_hash(host, uri, postdata):
-    request = 'http://' + host + urlparse.urlparse(uri).path + "?"
+    request = 'http://%s%s?' % (host, urlparse.urlparse(uri).path)
     dic = urlparse.urlparse(uri).query.split('&')
     for param in dic:
         if param != "" and "=" in param:

@@ -2,8 +2,9 @@
 {% block content %}
         <div class="container">
             <div class="col-md-12">
-                {% if scan_stat == "True" %}
-                <button style="width:50%;margin:2% 25% 0 25%" onclick="window.location.href='/scan_stat?stat=False'" class="btn btn-danger btn-lg btn-block"> Stop Gourdscan Scanner </button><br>
+                {% if scan_stat.lower() == "true" %}
+                <button style="width:50%;margin:0% 25% 0 25%" onclick="window.location.href='/reset_scan'" class="btn btn-danger btn-lg btn-block"> Reset Scaning Status </button>
+                <button style="width:50%;margin:1% 25% 0 25%" onclick="window.location.href='/scan_stat?stat=False'" class="btn btn-danger btn-lg btn-block"> Stop Gourdscan Scanner </button><br>
                 {% else %}
                 <button style="width:50%;margin:2% 25% 0 25%" onclick="window.location.href='/scan_stat?stat=True'" class="btn btn-success btn-lg btn-block"> Start Gourdscan Scanner </button><br>
                 {% end %}

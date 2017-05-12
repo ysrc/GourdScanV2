@@ -42,3 +42,6 @@ def error(msg):
 
 def jump(url):
     return "<script>window.location.href=\"%s\"</script>" % url
+
+def alert(content, url):
+    return "<script>alert(\"%s\");window.location.href=\"%s\"</script>" % (content, url)
