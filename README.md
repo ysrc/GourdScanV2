@@ -1,7 +1,6 @@
-# Gourdscan v2.1
+# Gourdscan v2.1 被动式漏洞扫描系统
 
 ### Passive Vulnerability Scan
-### 被动式漏洞扫描系统
 
 国内镜像源 https://code.aliyun.com/ysrc/GourdScanV2.git
 
