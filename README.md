@@ -1,20 +1,9 @@
 # Gourdscan v2.1
 
 ### Passive Vulnerability Scan
+### 被动式漏洞扫描系统
 
-## Changelog 
-
-### v2.1
-   
-* Web界面改进，统一控制所有代理和扫描线程，统一管理各种参数，首页刷新时间自定义。   
-* 新增登录页以及session控制。   
-* 线程控制，sqlmap选项，及各种扫描方式自定义。   
-* waiting, finished, vulnerable, running等列表的展示及一键清空。   
-* 各种代理模块自定义设置，并且可以直接在web界面启动，无需另开窗口。   
-* redis.conf中加入了Daemon为True，可后台运行，无需另开窗口，提供redis中的各个删除接口，无需再连接redis操作。   
-* 可以查看每个数据包及其详细漏洞payload，config中可以自定义后缀黑名单。   
-* 所有规则重定义，并且支持自定义规则。   
-
+国内镜像源 https://code.aliyun.com/ysrc/GourdScanV2.git
 
 ## 安装依赖：
 
@@ -22,14 +11,30 @@
 
 1. 安装系统依赖
 
-* apt-get install redis-server
+`
+apt-get install redis-server
+`
+
+或从源码编译安装
+
+`
+wget http://download.redis.io/redis-stable.tar.gz && tar xzf redis-stable.tar.gz && cd redis-stable && make && make install
+`
+
+系统已有redis的，运行 ` redis-server --version ` 查看自己的版本，需注意2.x版本的redis会有问题
 
 2. 安转 python 类库
 
 **基础模块**
 
+安装pip
+
 `
-$ pip install -r requirements.txt
+wget https://sec.ly.com/mirror/get-pip.py --no-check-certificate && python get-pip.py -i https://pypi.doubanio.com/simple/
+`
+
+`
+$ pip install -r requirements.txt -i https://pypi.doubanio.com/simple/
 `
 
 **其他事项**
@@ -64,6 +69,16 @@ python gourdscan.py
 > 默认redis密码为：Y3rc_Alw4ys_B3_W1th_Y0u   
 > 如果有勾选sqlmap api scan选项，请在服务器上开启sqlmap api。   
 
+一切正常的话你就可以在8000端口上访问到 GourdScanV2 的 web 界面了
+![](https://sec.ly.com/pic/20170512175531.png)
+
+Start Monitor 中提供了三种代理方式，区别的话在下方文档有写。
+选择一个代理方式 Start Proxy就可以启动代理，注意如果不是在本机测试的话 mix_addr 需要修改为 0.0.0.0
+
+在 Scan Config 中可以配置扫描规则， Start Gourdscan Scanner 之后就启动了扫描功能可以开始测试了。
+
+Happy Bug Hunting ~
+微信搜索“同程安全”关注 YSRC 公众号后，发送 gourd，会有人拉你进 gourdscan 讨论群。
 
 ## 关于扫描规则：
 
@@ -110,25 +125,25 @@ python gourdscan.py
 
 ## 关于测试及数据：
 
-1. 线程默认5个，扫描线程比较消耗资源，线程越多机器就越热，建议冬天可以多开点，如果主机非服务器或者配置低，不建议开
+1.线程默认5个，扫描线程比较消耗资源，线程越多机器就越热，建议冬天可以多开点，如果主机非服务器或者配置低，不建议开
     太多线程，从速度和资源占用的角度出发，我们更建议使用sqlmap api，而停掉内置的sql扫描 :) ，当然，非
     常欢迎各位黑阔向我们贡献代码和以及更加科学
     的扫描规则。
 
-2. 数据包扫描独立于扫描器设置中的线程，所以可能会出现实际扫描线程多于设置的情况，如果某packet没有query也没
+2.数据包扫描独立于扫描器设置中的线程，所以可能会出现实际扫描线程多于设置的情况，如果某packet没有query也没
     有post data，则扫描直接跳过。
 
-3. 经过测试，除sqlmap api以外规则全部开启的情况下，scan_level设置为3，如果没有任何漏洞，每个参数测试完成
+3.经过测试，除sqlmap api以外规则全部开启的情况下，scan_level设置为3，如果没有任何漏洞，每个参数测试完成
     时间在4-5分钟左右，如果使用sqlmap api而不使用内置规则，每个参数测试时间在2-3分钟左右。
 
-4. redis中存储的数据包结构：request={'headers':headers,'host':host,'url':url,'method':method,
+4.redis中存储的数据包结构：request={'headers':headers,'host':host,'url':url,'method':method,
     'postdata':postdata,'hash':url_hash,'uri':uri} json格式存储全数据包和uri(是否https)，以及其漏
     洞等级，漏洞警示。最后整体base64编码。
 
-5. 代理黑名单、代理白名单、后缀名黑名单均可在config中设置，注意：每个域名、后缀用英文逗号隔开，不可以有空格。
+5.代理黑名单、代理白名单、后缀名黑名单均可在config中设置，注意：每个域名、后缀用英文逗号隔开，不可以有空格。
     由于proxy中是通过str.endswith()判断，所以可以写入一级域名表示所有二级域名。
 
-6. proxy_io.py相对于mix_proxy来说，更加稳定，所以是stable proxy，同时在对于http请求上速度也快得多，
+6.proxy_io.py相对于mix_proxy来说，更加稳定，所以是stable proxy，同时在对于http请求上速度也快得多，
     但是由于调用了tornado web模块，在多线程模式下无法stop(除非将web平台也同时stop)，多进程模式下无法执行，所以
     目前只能实现伪关闭，关闭后无法执行代理的功能，这种状态下也占用不了多少资源，如果想真正关闭，请重启平台。多线
     程模式下，ctrl+c可能无法关闭平台，需要ctrl+z，然后ps -a|grep python ，关闭start.py的pid。
@@ -206,4 +221,17 @@ gourdscan
 
 2.默认数据页中每页100个结果，可以在config中修改。   
 
-3.本系统开放源代码，尚有各种不足，欢迎各位提交代码。   
+3.本系统开放源代码，尚有各种不足，欢迎各位提交代码。  
+
+## Changelog 
+
+### v2.1
+   
+* Web界面改进，统一控制所有代理和扫描线程，统一管理各种参数，首页刷新时间自定义。   
+* 新增登录页以及session控制。   
+* 线程控制，sqlmap选项，及各种扫描方式自定义。   
+* waiting, finished, vulnerable, running等列表的展示及一键清空。   
+* 各种代理模块自定义设置，并且可以直接在web界面启动，无需另开窗口。   
+* redis.conf中加入了Daemon为True，可后台运行，无需另开窗口，提供redis中的各个删除接口，无需再连接redis操作。   
+* 可以查看每个数据包及其详细漏洞payload，config中可以自定义后缀黑名单。   
+* 所有规则重定义，并且支持自定义规则。  
