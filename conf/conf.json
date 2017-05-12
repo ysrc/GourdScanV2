@@ -12,7 +12,7 @@
 "tornado_port": "10806",
 "mix_stat": "false",
 "scan_level": "3",
-"black_domain": "google.cn,doubleclick.net,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication.com,gstatic.com,bing.com,google.com,digicert.com,huihui.cn,tanx.com,qq.com,gtimg.cn,qlogo.cn,qpic.cn,upaiyun.com,gvt2.com,taobao.com,aliyun.com,alicdn.com,360.cn,gravatar.com,sinaimg.cn,githubusercontent.com,githubapp.com,feedburner.com,cloudfront.net,mmstat.com,bdstatic.com",
+"black_domain": "google.cn,doubleclick.net,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication.com,gstatic.com,bing.com,google.com,digicert.com,huihui.cn,tanx.com,qq.com,gtimg.cn,qlogo.cn,qpic.cn,upaiyun.com,gvt2.com,taobao.com,aliyun.com,alicdn.com,360.cn,gravatar.com,sinaimg.cn,githubusercontent.com,githubapp.com,feedburner.com,cloudfront.net,mmstat.com,bdstatic.com,addthis.com,51.la,bidswitch.com,wp.com,sharethis.com",
 "port": "8000",
 "white_domain": "",
 "version": "2.1",
