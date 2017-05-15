@@ -2,3 +2,4 @@ requests
 tornado
 redis
 scapy
+pcapy

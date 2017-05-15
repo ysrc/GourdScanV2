@@ -9,6 +9,7 @@ config.load()["test"]
 import warnings
 import json
 import os
+import out
 
 from lib.settings import CHECK_CONF_FILE
 from lib.settings import RULES_CONF_FILE
@@ -20,9 +21,12 @@ warnings.filterwarnings("ignore")
 
 def load():
     with open(CHECK_CONF_FILE) as con:
-        conf = json.load(con)
-        return conf
-
+        try:
+            conf = json.load(con)
+            return conf
+        except:
+            out.error("conf.json error, please download another one and replace it.")
+            exit()
 
 def update(conf):
     with open(CHECK_CONF_FILE, 'w') as con:

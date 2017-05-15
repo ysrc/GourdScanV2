@@ -53,8 +53,13 @@ $ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.g
 
 ### OSX
 
- 无需其他设置
+`
+$ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip 
+`
 
+`
+$ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.gz && tar zxf pylibpcap-0.6.4.tar.gz
+`
 
 ## 使用方法：
 

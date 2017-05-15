@@ -175,11 +175,11 @@ class ReqHandler(BaseHandler):
                                 if message != "":
                                     messages.append(message)
                                 results[rule]['message'] = messages
-                #split the url in 90 chars
+                #split the url in 80 chars
             url = request['url']
-            request['url'] = ""
-            for i in range(len(url)/90+1):
-                request['url'] += url[i*90:i*90+90] + "\n"
+            request['url_encode'] = ""
+            for i in range(len(url)/80+1):
+                request['url_encode'] += url[i*80:i*80+80] + "\n"
             return self.render("req.html", request=request, results=results, stat=stat)
         except Exception, e:
             out.error(str(e))
@@ -219,10 +219,10 @@ class ListHandler(BaseHandler):
             except:
                 decode_results = {'stat': 0}
             req_content[reqhash] = decode_content['method'] + "|" + decode_content['url']
-            #split the url in 90 chars
+            #split the url in 80 chars
             req_content[reqhash] += "|"
-            for i in range(len(req_content[reqhash].split("|")[1])/90+1):
-                req_content[reqhash] += req_content[reqhash].split("|")[1][i*90:i*90+90] + "\n"
+            for i in range(len(req_content[reqhash].split("|")[1])/80+1):
+                req_content[reqhash] += req_content[reqhash].split("|")[1][i*80:i*80+80] + "\n"
             stats = ['success', 'info', 'warning', "danger"]
             stat = decode_results['stat']
             stat = stats[stat]

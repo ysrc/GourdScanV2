@@ -8,7 +8,7 @@
                 <div class="panel panel-{{stat}}" style="margin-left:20%">
                     <div class="panel-heading">Request URL</div>
                     <div class="panel-body">
-                    {{request['url']}}<br>
+                    <a href="{{request['url']}}" target="_blank">{% raw request['url_encode'] %}</a><br>
                     Security Stat: {{stat}}
                     </div>
                 </div>
