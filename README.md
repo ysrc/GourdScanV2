@@ -63,22 +63,29 @@ https://sec.ly.com/mirror/WinPcap_4_1_3.exe
 ### OSX
 
 安装 homebrew
+
 `
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 `
+
 安装 redis
+
 `
 brew install redis
 `
+
 启动 redis
+
 `
 redis-server conf/redis.conf
 `
 
 安装依赖
+
 `
 pip install pcapy -i https://pypi.doubanio.com/simple/
 `
+
 `
 git clone https://github.com/dugsong/libdnet.git && cd libdnet && ./configure && make && cd python && python setup.py install
 `
