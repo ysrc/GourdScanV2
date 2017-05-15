@@ -62,12 +62,25 @@ https://sec.ly.com/mirror/WinPcap_4_1_3.exe
 
 ### OSX
 
+安装 homebrew
 `
-$ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+`
+安装 redis
+`
+brew install redis
+`
+启动 redis
+`
+redis-server conf/redis.conf
 `
 
+安装依赖
 `
-$ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.gz && tar zxf pylibpcap-0.6.4.tar.gz
+pip install pcapy -i https://pypi.doubanio.com/simple/
+`
+`
+git clone https://github.com/dugsong/libdnet.git && cd libdnet && ./configure && make && cd python && python setup.py install
 `
 
 ## 使用方法：

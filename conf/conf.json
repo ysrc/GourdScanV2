@@ -12,7 +12,7 @@
 "tornado_port": "10806",
 "mix_stat": "false",
 "scan_level": "3",
-"black_domain": "google.cn,doubleclick.net,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication.com,gstatic.com,bing.com,google.com,digicert.com,huihui.cn,tanx.com,qq.com,gtimg.cn,qlogo.cn,qpic.cn,upaiyun.com,gvt2.com,taobao.com,aliyun.com,alicdn.com,360.cn,gravatar.com,sinaimg.cn,githubusercontent.com,githubapp.com,feedburner.com,cloudfront.net,mmstat.com,bdstatic.com,addthis.com,51.la,bidswitch.com,wp.com,sharethis.com,127.0.0.1,0.0.0.0,localhost",
+"black_domain": "127.0.0.1,0.0.0.0,localhost,google.cn,doubleclick.net,cnzz.com,baidu.com,40017.cn,google-analytics.com,googlesyndication.com,gstatic.com,bing.com,google.com,digicert.com,huihui.cn,tanx.com,qq.com,gtimg.cn,qlogo.cn,qpic.cn,upaiyun.com,gvt2.com,taobao.com,aliyun.com,alicdn.com,360.cn,gravatar.com,sinaimg.cn,githubusercontent.com,githubapp.com,feedburner.com,cloudfront.net,mmstat.com,bdstatic.com,addthis.com,51.la,bidswitch.com,wp.com,sharethis.com,googleapis.com,twimg.com,amazonaws.com,criteo.com,zopim.com,optimizely.com,microsoft.com,uxengine.net",
 "port": "8000",
 "white_domain": "",
 "version": "2.1",
