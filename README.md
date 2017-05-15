@@ -39,6 +39,11 @@ $ pip install -r requirements.txt -i https://pypi.doubanio.com/simple/
 **其他事项**
 
 以下如果有报错便可以安装，一般不需要安装   
+
+镜像：   
+https://sec.ly.com/mirror/libdnet-libdnet-1.12.tar.gz   
+https://sec.ly.com/mirror/pylibpcap-0.6.4.tar.gz   
+
 `
 $ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip 
 `
@@ -47,9 +52,13 @@ $ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip
 $ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.gz && tar zxf pylibpcap-0.6.4.tar.gz
 `
 
-### Windows
+### Windows   
 
- 无需其他设置
+同程src已有各依赖镜像，可以把exe文件都装上   
+https://sec.ly.com/mirror/dnet-1.12.win32-py2.7.exe   
+https://sec.ly.com/mirror/dpkt-1.7.win32.exe   
+https://sec.ly.com/mirror/pcap-1.1.win32-py2.7.exe   
+https://sec.ly.com/mirror/WinPcap_4_1_3.exe   
 
 ### OSX
 
