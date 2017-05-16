@@ -8,7 +8,7 @@
 
 ### Linux
 
-1. 安装系统依赖
+1. 安装 Redis
 
 `
 apt-get install redis-server
@@ -20,7 +20,7 @@ apt-get install redis-server
 wget http://download.redis.io/redis-stable.tar.gz && tar xzf redis-stable.tar.gz && cd redis-stable && make && make install
 `
 
-系统已有redis的，运行 ` redis-server --version ` 查看自己的版本，需注意2.x版本的redis会有问题
+系统已有 Redis 的，运行 ` redis-server --version ` 查看自己的版本，需注意2.x版本的 Redis 会有问题
 
 2. 安转 python 类库
 
@@ -52,9 +52,18 @@ $ wget https://github.com/dugsong/libdnet/archive/master.zip && unzip master.zip
 $ wget http://dfn.dl.sourceforge.net/sourceforge/pylibpcap/pylibpcap-0.6.4.tar.gz && tar zxf pylibpcap-0.6.4.tar.gz
 `
 
-### Windows   
+### Windows
 
-同程src已有各依赖镜像，可以把exe文件都装上   
+下载 Redis
+https://sec.ly.com/mirror/Redis-x64-3.2.100.zip
+
+启动 Redis
+
+`
+redis-server.exe GourdScan路径\conf\redis.conf
+`
+
+如需使用网卡抓包方式，同程src已有各依赖镜像，可以把exe文件都装上 
 https://sec.ly.com/mirror/dnet-1.12.win32-py2.7.exe   
 https://sec.ly.com/mirror/dpkt-1.7.win32.exe   
 https://sec.ly.com/mirror/pcap-1.1.win32-py2.7.exe   
@@ -93,6 +102,7 @@ git clone https://github.com/dugsong/libdnet.git && cd libdnet && ./configure &&
 ## 使用方法：
 
 ```
+redis 指定 conf/redis.conf 启动
 python gourdscan.py
 ```
 
