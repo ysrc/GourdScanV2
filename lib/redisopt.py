@@ -47,7 +47,7 @@ def content_deal(headers, host, method, postdata, uri, packet):
     black_domain = config.load()['black_domain']
     black_ext = config.load()['black_ext']
     for ext in black_ext.split(','):
-        if u.path.lower().endswith(ext):
+        if u.path.lower().endswith("."+ext):
             return
     for domain in black_domain.split(','):
         if u.netloc.lower().split(':')[0].endswith(domain):
