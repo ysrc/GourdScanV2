@@ -13,7 +13,7 @@ def authenticated(method):
             self.set_status(302)
             return
         else:
-             return method(self, *args, **kwargs)
+            return method(self, *args, **kwargs)
     return wrapper
 
 
