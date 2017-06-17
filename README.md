@@ -64,6 +64,7 @@ redis-server.exe GourdScan路径\conf\redis.conf
 `
 
 如需使用网卡抓包方式，同程src已有各依赖镜像，可以把exe文件都装上 
+
 https://sec.ly.com/mirror/dnet-1.12.win32-py2.7.exe   
 https://sec.ly.com/mirror/dpkt-1.7.win32.exe   
 https://sec.ly.com/mirror/pcap-1.1.win32-py2.7.exe   
@@ -249,6 +250,8 @@ gourdscan
 > 此外这边有个 trick，在 chrome 的快捷方式目标中加入 --ignore-certificate-errors 参数，可以让 chrome 忽略证书错误继续加载网页。
 
  ![](https://sec.ly.com/pic/20170512192413.jpg)
+ 
+ mac 下可以在终端输入 `open -a /Applications/Google\ Chrome.app --args --ignore-certificate-errors` 来忽略证书错误。
 
 * 问：引入scapy module的时候显示缺少libdnet 
 > 在所需环境中有libdnet及其依赖的安装方式
