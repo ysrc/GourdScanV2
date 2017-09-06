@@ -103,7 +103,7 @@ git clone https://github.com/dugsong/libdnet.git && cd libdnet && ./configure &&
 ## 使用方法：
 
 ```
-redis 指定 conf/redis.conf 启动
+redis-server conf/redis.conf
 python gourdscan.py
 ```
 
