@@ -29,11 +29,11 @@ wget http://download.redis.io/redis-stable.tar.gz && tar xzf redis-stable.tar.gz
 安装pip
 
 `
-wget https://sec.ly.com/mirror/get-pip.py --no-check-certificate && python get-pip.py -i https://pypi.doubanio.com/simple/
+wget https://sec.ly.com/mirror/get-pip.py --no-check-certificate && python get-pip.py -i https://mirrors.aliyun.com/pypi/simple/
 `
 
 `
-$ pip install -r requirements.txt -i https://pypi.doubanio.com/simple/
+$ pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 `
 
 **其他事项**
