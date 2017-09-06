@@ -2,7 +2,7 @@
 
 ### Passive Vulnerability Scan
 
-国内镜像源 https://code.aliyun.com/ysrc/GourdScanV2.git
+**为避免 Gourdscan 被恶意利用，开源版本只放出了简单的探测规则，无法用作为黑客入侵工具。请使用者遵守《[中华人民共和国网络安全法](http://www.npc.gov.cn/npc/xinwen/2016-11/07/content_2001605.htm)》，勿将 Gourdscan 用于未授权的测试，参与项目的社区成员/YSRC/同程安全应急响应中心/同程网络科技股份有限公司不负任何连带法律责任。**
 
 ## 安装依赖：
 
